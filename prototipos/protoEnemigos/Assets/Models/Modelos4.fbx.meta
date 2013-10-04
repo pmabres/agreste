@@ -1,0 +1,135 @@
+fileFormatVersion: 2
+guid: 834c9b4b38e21b544aa32523d7023e55
+ModelImporter:
+  serializedVersion: 15
+  fileIDToRecycleName:
+    100000: Ak_mano_l
+    100002: Ak_mano_r
+    100004: AK_pie_l
+    100006: AK_pie_r
+    100008: Antebrazo_l
+    100010: Antebrazo_r
+    100012: Brazo_l
+    100014: Brazo_r
+    100016: Cabeza
+    100018: Cadera
+    100020: Cadera_Cont
+    100022: Camera
+    100024: Columna
+    100026: Cube
+    100028: Cuello
+    100030: Dedos_falange_l
+    100032: Dedos_falange_r
+    100034: Dedos_punta_l
+    100036: Dedos_punta_r
+    100038: Mano_l
+    100040: Mano_r
+    100042: //RootNode
+    100044: Muslo_l
+    100046: Muslo_r
+    100048: Pecho
+    100050: Pie_Controlador_l
+    100052: Pie_Controlador_r
+    100054: Pie_l
+    100056: Pie_r
+    100058: Pierna_l
+    100060: Pierna_r
+    100062: Pulgar_falange_l
+    100064: Pulgar_falange_r
+    100066: Pulgar_punta_l
+    100068: Pulgar_punta_r
+    100070: Rig
+    400000: Ak_mano_l
+    400002: Ak_mano_r
+    400004: AK_pie_l
+    400006: AK_pie_r
+    400008: Antebrazo_l
+    400010: Antebrazo_r
+    400012: Brazo_l
+    400014: Brazo_r
+    400016: Cabeza
+    400018: Cadera
+    400020: Cadera_Cont
+    400022: Camera
+    400024: Columna
+    400026: Cube
+    400028: Cuello
+    400030: Dedos_falange_l
+    400032: Dedos_falange_r
+    400034: Dedos_punta_l
+    400036: Dedos_punta_r
+    400038: Mano_l
+    400040: Mano_r
+    400042: //RootNode
+    400044: Muslo_l
+    400046: Muslo_r
+    400048: Pecho
+    400050: Pie_Controlador_l
+    400052: Pie_Controlador_r
+    400054: Pie_l
+    400056: Pie_r
+    400058: Pierna_l
+    400060: Pierna_r
+    400062: Pulgar_falange_l
+    400064: Pulgar_falange_r
+    400066: Pulgar_punta_l
+    400068: Pulgar_punta_r
+    400070: Rig
+    4300000: Cube
+    7400000: Default Take
+    7400002: Idle
+    7400004: Idle_001
+    9500000: //RootNode
+    13700000: Cube
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    handles: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  additionalBone: 1
+  animationType: 2
+  userData: 
