@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Main : MonoBehaviour {
 
 	GameObject player;
 	//GameObject terrain;
 	GameObject terrain2;	
+	public List<Terrain> lista = new List<Terrain>();
 	// Use this for initialization
 	void Start () {
 		player = GameObject.FindGameObjectWithTag(Constants.TAG_PLAYER);
@@ -30,6 +32,7 @@ public class Main : MonoBehaviour {
 			CreateTerrain(0);
 			CreateTerrain(1);
 			CreateTerrain(2);
+			AsignName();
 		}
 		if(player.transform.localPosition.x >(Statics.terrain[4].Field.transform.localPosition.x + Statics.terrain[4].Field.transform.localScale.x / 2))
 		{
@@ -39,26 +42,39 @@ public class Main : MonoBehaviour {
 			AddTerrainIndex(-1);	
 			CreateTerrain(5);
 			CreateTerrain(2);
+			AsignName();
 			
 		}
 		else if(player.transform.localPosition.x <(Statics.terrain[4].Field.transform.localPosition.x - Statics.terrain[4].Field.transform.localScale.x / 2))
 		{
-			
 			DestroyTerrain(2);
 			DestroyTerrain(5);
 			AddTerrainIndex(1);
+			
 			CreateTerrain(0);
 			CreateTerrain(3);			
+
+			AsignName();
+		}
+	}
+	void AsignName()
+	{
+		for (int i = 0; i < Statics.terrain.Length; i++) 
+		{
+			Statics.terrain[i].Field.name =i.ToString();	
 		}
 	}
 	void AddTerrainIndex(int idx)
 	{
+		int d=-1;
 		for (int i = 0; i < Statics.terrain.Length; i++) 
 		{
-			if (Statics.terrain[i].Field != null && i + idx < Statics.terrain.Length && i + idx >= 0)
-			{
+			if (Statics.terrain[i].Field != null && i + idx < Statics.terrain.Length && i + idx >= 0 && d != i)
+			{				
+				if (Statics.terrain[i + idx].Field == null) d=i + idx; else d=-1;
 				Statics.terrain[i + idx].Field = Statics.terrain[i].Field;
 			}
+			
 		}
 	}
 	void CreateTerrains()
@@ -95,7 +111,7 @@ public class Main : MonoBehaviour {
 		//{
 			
 			GameObject.Destroy(Statics.terrain[i].Field);
-			//Statics.terrain[i].Field = null;
+			Statics.terrain[i].Field = null;
 			
 		//}
 	}

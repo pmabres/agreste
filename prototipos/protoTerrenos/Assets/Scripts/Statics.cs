@@ -17,6 +17,6 @@ public static class Statics {
 		tmp.transform.parent = Parent;
 		return tmp;
 		
-	}
+	}	
 	
 }
