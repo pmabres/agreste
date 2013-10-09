@@ -66,11 +66,26 @@ public class Main : MonoBehaviour {
 	}
 	void AddTerrainIndex(int idx)
 	{
-		int d=-1;
-		for (int i = 0; i < Statics.terrain.Length; i++) 
+		int a=0;
+		int b=0;
+		int c=0;
+		if (idx >0)
+		{			
+			a=Statics.terrain.Length-1;
+			b=-1;
+			c=-1;
+		}
+		else
 		{
-			if (Statics.terrain[i].Field != null && i + idx < Statics.terrain.Length && i + idx >= 0 && d != i)
-			{				
+			a=0;
+			b=Statics.terrain.Length;
+			c=1;
+		}
+		int d=-1;
+		for (int i = a; i != b; i+=c) 
+		{
+			if (Statics.terrain[i].Field != null && i + idx < Statics.terrain.Length && i + idx >= 0 && d != i)	
+			{								
 				if (Statics.terrain[i + idx].Field == null) d=i + idx; else d=-1;
 				Statics.terrain[i + idx].Field = Statics.terrain[i].Field;
 			}
@@ -112,7 +127,7 @@ public class Main : MonoBehaviour {
 			
 			GameObject.Destroy(Statics.terrain[i].Field);
 			Statics.terrain[i].Field = null;
-			
+			//Statics.terrain[i] = null;
 		//}
 	}
 }
