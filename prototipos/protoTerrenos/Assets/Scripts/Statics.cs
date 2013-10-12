@@ -1,11 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public static class Statics {
-	
+public static class Statics 
+{
 	public static GameObject CurrentTerrain;
-	public static Terrains[] terrain;
-	
 	public static GameObject Instantiate(string tag)
 	{		
 		return MonoBehaviour.Instantiate(Resources.Load(Constants.RESOURCES_FOLDER+tag)) as GameObject;

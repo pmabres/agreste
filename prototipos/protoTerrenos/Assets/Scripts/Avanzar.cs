@@ -1,15 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Avanzar : MonoBehaviour {
+public class Avanzar : MonoBehaviour 
+{
 	private CharacterMotor motor;
 	public bool corriendo=true;	
 	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
 		motor = GetComponent<CharacterMotor>();
 	}
 	// Update is called once per frame
-	void Update () {		
+	void Update () 
+	{		
 		if(corriendo)
 		{
 			if(Time.deltaTime>=0.02)
