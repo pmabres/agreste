@@ -42,43 +42,46 @@ public class Terrains:MonoBehaviour
 	}
 	
 	// Update is called once per frame
-	void Update () {	
-		if(player.transform.localPosition.z >(terrain[4].Field.transform.localPosition.z + terrain[4].Field.transform.localScale.z /2))
-		{
-			
-			DestroyTerrain(3);
-			DestroyTerrain(4);
-			DestroyTerrain(5);	
-			AddTerrainIndex(3);			
-			CreateTerrain(0);
-			CreateTerrain(1);
-			CreateTerrain(2);
-			AsignName();
-			SetCurrentTerrain();
-		}
-		if(player.transform.localPosition.x >(terrain[4].Field.transform.localPosition.x + terrain[4].Field.transform.localScale.x / 2))
-		{
+	void FixedUpdate () {
+		if (!Statics.Paused)
+		{							
+			if(player.transform.localPosition.z >(terrain[4].Field.transform.localPosition.z + terrain[4].Field.transform.localScale.z /2))
+			{
 				
-			DestroyTerrain(3);
-			DestroyTerrain(0);	
-			AddTerrainIndex(-1);	
-			CreateTerrain(5);
-			CreateTerrain(2);
-			AsignName();
-			SetCurrentTerrain();
-			
-		}
-		else if(player.transform.localPosition.x <(terrain[4].Field.transform.localPosition.x - terrain[4].Field.transform.localScale.x / 2))
-		{
-			DestroyTerrain(2);
-			DestroyTerrain(5);
-			AddTerrainIndex(1);
-			
-			CreateTerrain(0);
-			CreateTerrain(3);			
-
-			AsignName();
-			SetCurrentTerrain();
+				DestroyTerrain(3);
+				DestroyTerrain(4);
+				DestroyTerrain(5);	
+				AddTerrainIndex(3);			
+				CreateTerrain(0);
+				CreateTerrain(1);
+				CreateTerrain(2);
+				AsignName();
+				SetCurrentTerrain();
+			}
+			if(player.transform.localPosition.x >(terrain[4].Field.transform.localPosition.x + terrain[4].Field.transform.localScale.x / 2))
+			{
+					
+				DestroyTerrain(3);
+				DestroyTerrain(0);	
+				AddTerrainIndex(-1);	
+				CreateTerrain(5);
+				CreateTerrain(2);
+				AsignName();
+				SetCurrentTerrain();
+				
+			}
+			else if(player.transform.localPosition.x <(terrain[4].Field.transform.localPosition.x - terrain[4].Field.transform.localScale.x / 2))
+			{
+				DestroyTerrain(2);
+				DestroyTerrain(5);
+				AddTerrainIndex(1);
+				
+				CreateTerrain(0);
+				CreateTerrain(3);			
+	
+				AsignName();
+				SetCurrentTerrain();
+			}
 		}
 	}
 	void AsignName()
@@ -157,7 +160,7 @@ public class Terrains:MonoBehaviour
 	}
 	void GenerateEnvironment(int i)
 	{
-		for (int b=1;b<200;b++)
+		for (int b=1;b<Statics.TreesPerTerrain;b++)
 		{
 			int x =  Mathf.FloorToInt(Random.Range(terrain[i].Field.transform.position.x-terrain[i].Field.transform.localScale.x/2,terrain[i].Field.transform.position.x+terrain[i].Field.transform.localScale.x/2));
 			int z =  Mathf.FloorToInt(Random.Range(terrain[i].Field.transform.position.z-terrain[i].Field.transform.localScale.z/2,terrain[i].Field.transform.position.z+terrain[i].Field.transform.localScale.z/2));
