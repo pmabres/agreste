@@ -28,6 +28,7 @@ public class Avanzar : MonoBehaviour
 					motor.movement.maxSidewaysSpeed = 10;
 			
 				motor.SetVelocity(new Vector3(motor.movement.velocity.x,motor.movement.velocity.y,motor.movement.maxForwardSpeed));
+				Statics.MtsAdvanced ++;
 			}
 		}
 	}

@@ -8,6 +8,10 @@ public static class Statics
 	public static int TreesPerTerrain=0;
 	public static bool AccelerometerActive=false;
 	public static bool Paused=false;
+	public static int MtsAdvanced = 0;
+	
+	
+	
 	public static GameObject Instantiate(string tag)	
 	{		
 		return MonoBehaviour.Instantiate(Resources.Load(Constants.RESOURCES_FOLDER+tag)) as GameObject;

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class Main : MonoBehaviour 
 {
 	TerrainList terrainList;
+	
 	// Use this for initialization
 	void Start () 
 	{		
@@ -13,6 +14,7 @@ public class Main : MonoBehaviour
 		Screen.sleepTimeout = SleepTimeout.NeverSleep;
 		Statics.AccelerometerActive = false;
 		Statics.Paused = true;
+		
 	}
 	
 	// Update is called once per frame
