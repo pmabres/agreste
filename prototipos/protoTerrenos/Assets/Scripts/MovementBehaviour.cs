@@ -51,11 +51,11 @@ public class MovementBehaviour : MonoBehaviour {
 			
 			if (touch1 != 0 ^ touch2 != 0)
 			{		
-				if ((touch1<Screen.width*Constants.TOUCH_SCREEN_PROPORTION && touch1>0)||(touch2<Screen.width*Constants.TOUCH_SCREEN_PROPORTION && touch2>0)) // if the user press left go left
+				if ((touch1<Screen.width*Constants.TOUCH_SCREEN_WIDTH_PROPORTION && touch1>0)||(touch2<Screen.width*Constants.TOUCH_SCREEN_WIDTH_PROPORTION && touch2>0)) // if the user press left go left
 				{
 					motor.SetVelocity(new Vector3(-AccelLimit*maxSideSpeed,motor.movement.velocity.y,motor.movement.velocity.z));
 				}			
-				if (touch1>Screen.width - Screen.width*Constants.TOUCH_SCREEN_PROPORTION ||touch2>Screen.width - Screen.width*Constants.TOUCH_SCREEN_PROPORTION ) // if the user press right go right
+				if (touch1>Screen.width - Screen.width*Constants.TOUCH_SCREEN_WIDTH_PROPORTION ||touch2>Screen.width - Screen.width*Constants.TOUCH_SCREEN_WIDTH_PROPORTION ) // if the user press right go right
 				{					
 					motor.SetVelocity(new Vector3(AccelLimit*maxSideSpeed,motor.movement.velocity.y,motor.movement.velocity.z));
 				}

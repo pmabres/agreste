@@ -3,11 +3,11 @@ using System.Collections;
 
 public class TerrainList
 {
-	GameObject gTerrains;	
+	public GameObject gTerrains;
 	public TerrainList()
 	{		
-		gTerrains = new GameObject();		
-		gTerrains.AddComponent<Terrains>();		
+		gTerrains = new GameObject();
+		gTerrains.AddComponent<Terrains>();
 		gTerrains.name = "TerrainList";
 		gTerrains.tag = "TerrainList";
 	}	
@@ -20,8 +20,7 @@ public class TerrainsProperties
 }
 public class Terrains:MonoBehaviour
 {	
-	private TerrainsProperties[] terrain;
-	private GameObject player;
+	private TerrainsProperties[] terrain;	
 	
 	public Terrains()
 	{		
@@ -30,8 +29,7 @@ public class Terrains:MonoBehaviour
 	{
 		Statics.CurrentTerrain = terrain[4].Field;
 	}
-	void Start () {
-		player = GameObject.FindGameObjectWithTag(Constants.TAG_PLAYER);
+	void Start () {		
 		terrain = new TerrainsProperties[6];
 		for (int i = 0; i < terrain.Length; i++) 
 		{
@@ -45,7 +43,7 @@ public class Terrains:MonoBehaviour
 	void FixedUpdate () {
 		if (!Statics.Paused)
 		{							
-			if(player.transform.localPosition.z >(terrain[4].Field.transform.localPosition.z + terrain[4].Field.transform.localScale.z /2))
+			if(Statics.Player.transform.localPosition.z >(terrain[4].Field.transform.localPosition.z + terrain[4].Field.transform.localScale.z /2))
 			{
 				
 				DestroyTerrain(3);
@@ -58,7 +56,7 @@ public class Terrains:MonoBehaviour
 				AsignName();
 				SetCurrentTerrain();
 			}
-			if(player.transform.localPosition.x >(terrain[4].Field.transform.localPosition.x + terrain[4].Field.transform.localScale.x / 2))
+			if(Statics.Player.transform.localPosition.x >(terrain[4].Field.transform.localPosition.x + terrain[4].Field.transform.localScale.x / 2))
 			{
 					
 				DestroyTerrain(3);
@@ -70,7 +68,7 @@ public class Terrains:MonoBehaviour
 				SetCurrentTerrain();
 				
 			}
-			else if(player.transform.localPosition.x <(terrain[4].Field.transform.localPosition.x - terrain[4].Field.transform.localScale.x / 2))
+			else if(Statics.Player.transform.localPosition.x <(terrain[4].Field.transform.localPosition.x - terrain[4].Field.transform.localScale.x / 2))
 			{
 				DestroyTerrain(2);
 				DestroyTerrain(5);
@@ -121,7 +119,7 @@ public class Terrains:MonoBehaviour
 	}
 	void CreateTerrains()
 	{					
-		terrain[4].Field = Statics.Instantiate(Constants.TAG_TERRAIN, new Vector3(player.transform.position.x,0,player.transform.position.z), gameObject.transform);
+		terrain[4].Field = Statics.Instantiate(Constants.TAG_TERRAIN, new Vector3(Statics.Player.transform.position.x,0,Statics.Player.transform.position.z), gameObject.transform);
 		
 		terrain[3].PositionChange = new Vector3(-terrain[4].Field.transform.localScale.x,0,0);		
 		terrain[3].Field = Statics.Instantiate(Constants.TAG_TERRAIN, terrain[4].Field.transform.position + terrain[3].PositionChange, gameObject.transform);
