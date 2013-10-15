@@ -10,7 +10,7 @@ public class PlayerBehaviour : MonoBehaviour {
 	}
 	void Start()
 	{
-		HitPoints = 1;
+		HitPoints = 3;
 	}
 	// Update is called once per frame
 	void FixedUpdate () 
