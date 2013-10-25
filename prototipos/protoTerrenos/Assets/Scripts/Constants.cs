@@ -17,8 +17,12 @@ public static class Constants {
 	
 	public enum EnemiesNames
 	{
-		Min = 1,
-		HunterA = 1,
-		Max = 1
+		Min = 0,
+		HunterA = 0,
+		HunterB= 1,
+		HunterC= 2,
+		HunterD= 3,
+		HunterE=4,
+		Max = 5
 	}
 }
