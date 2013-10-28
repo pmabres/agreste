@@ -4,13 +4,19 @@ using System.Collections.Generic;
 
 public class SpawnerBehaviour : MonoBehaviour {
 	public float SpawnTimer=0.2f;
-	public float SpawnLastTime=0;
+	public float SpawnPowerTimer=1;
+	public float SpawnEnemiLastTime=0;
+	public float SpawnPowerLastTime=0;
+	int Selected;
 	float [,] Enemi = new float [(int)Constants.EnemiesNames.Max,7];
+	float [,] Powers = new float[(int)Constants.PowerNames.Max,7];
 	List<int> ListEnem = new List<int>();
+	List<int> ListPower = new List<int>();
 	
 	// Use this for initialization
 	void Start () 
 	{
+		#region Tabla de probabilidad de aparicion enemigos/nivel
 		//Enemy A
 		//Enemi [Enemigo, Nivel]
 		Enemi[0,0] = 1;
@@ -56,6 +62,46 @@ public class SpawnerBehaviour : MonoBehaviour {
 		Enemi[4,4] = 0.5f;
 		Enemi[4,5] = 0.75f;
 		Enemi[4,6] = 1;
+		#endregion
+		
+		#region Tabla de probabilidad de aparicion PowerUps/Nivel
+		//Salud
+		Powers[0,0] = 0;
+		Powers[0,1] = 0.75f;
+		Powers[0,2] = 1;
+		Powers[0,3] = 0.5f;
+		Powers[0,4] = 1;
+		Powers[0,5] = 0.5f;
+		Powers[0,6] = 0.25f;
+		
+		//Speed
+		Powers[1,0] = 0.25f;
+		Powers[1,1] = 0.5f;
+		Powers[1,2] = 0.25f;
+		Powers[1,3] = 0.75f;
+		Powers[1,4] = 0.75f;
+		Powers[1,5] = 1;
+		Powers[1,6] = 1;
+		
+		//Attack
+		Powers[2,0] = 0.5f;
+		Powers[2,1] = 0.5f;
+		Powers[2,2] = 0.5f;
+		Powers[2,3] = 1;
+		Powers[2,4] = 0.5f;
+		Powers[2,5] = 0.5f;
+		Powers[2,6] = 0.75f;
+		
+		//Free
+		Powers[3,0] = 1;
+		Powers[3,1] = 0.75f;
+		Powers[3,2] = 1;
+		Powers[3,3] = 0.5f;
+		Powers[3,4] = 1;
+		Powers[3,5] = 0.5f;
+		Powers[3,6] = 0.25f;
+		#endregion
+		
 	}
 	
 	// Update is called once per frame
@@ -63,63 +109,129 @@ public class SpawnerBehaviour : MonoBehaviour {
 	{
 		if (!Statics.Paused)
 		{
-			SpawnLastTime += Time.deltaTime;
-			if (SpawnLastTime >= SpawnTimer)
-			{
-				
-				SpawnLastTime = 0;
-				
-				string EnemyName = null;
-				//Random Entre 0 y 1 para limitar la lista de enemigos
-				float prob = (float) Random.Range(0.0f,1.0f);
-				
-				ListEnem.Clear();
+			SpawnEnemiLastTime += Time.deltaTime;
+			SpawnPowerLastTime += Time.deltaTime;
 			
-				
-				//Se filtra por probavilidad
-				for (int i = 0; i < (int)Constants.EnemiesNames.Max; i++) {
+			//Random Entre 0 y 1 para limitar la lista de enemigos y PowerUps
+			float prob = (float) Random.Range(0.0f,1.0f);
+			ListEnem.Clear();
+			ListPower.Clear();
+			
+			#region Spawner Enemigos
+			
+			if (SpawnEnemiLastTime >= SpawnTimer)
+			{
+				//Se verifica si se recogio el power up de camino libre"
+				if(!Statics.FreeRoad)
+				{
+					SpawnEnemiLastTime = 0;
 					
-					if (prob <= Enemi[i,Statics.CurrentLevel-1]) 
+					string EnemyName = null;
+					
+					//Se filtra por probabilidad
+					for (int i = 0; i < (int)Constants.EnemiesNames.Max; i++) {
+						
+						if (prob <= Enemi[i,Statics.CurrentLevel-1]) 
+						{
+							ListEnem.Add(i);
+						}
+					}
+					
+					//Se hace un random entre los enemigos en la lista
+					Selected = Mathf.FloorToInt(Random.Range(0,(int) ListEnem.Count));
+					Selected = ListEnem[Selected];
+					
+					if (Selected == (int) Constants.EnemiesNames.HunterA)
 					{
-						ListEnem.Add(i);
+						EnemyName = "HunterA";
+						Debug.Log("NiñoPalo");
+					}
+					else if (Selected == (int) Constants.EnemiesNames.HunterB)
+					{
+						EnemyName = "HunterA";
+						Debug.Log("NiñoGomera");
+					}
+					else if (Selected == (int) Constants.EnemiesNames.HunterC)
+					{
+						EnemyName = "HunterA";
+						Debug.Log("CazadorMach");
+					}
+					else if (Selected == (int) Constants.EnemiesNames.HunterD)
+					{
+						EnemyName = "HunterA";
+						Debug.Log("CazadorRif");
+					}
+					else if (Selected == (int) Constants.EnemiesNames.HunterE)
+					{
+						EnemyName = "HunterA";
+						Debug.Log("Perro");
+					}
+					
+					if (EnemyName!=null)
+					{
+						
+						gameObject.transform.position = new Vector3(Random.Range(Statics.Player.transform.position.x - 50,Statics.Player.transform.position.x + 50),
+																	gameObject.transform.position.y,
+																	Random.Range(Statics.Player.transform.position.z + 50,Statics.Player.transform.position.z + 150));
+						Statics.Instantiate(EnemyName,gameObject.transform.position,GameObject.FindGameObjectWithTag(Constants.TAG_ENEMIES).transform);
 					}
 				}
+			}
+			#endregion
 				
-				//Se hace un random entre los enemigos en la lista
-				int Selected = Mathf.FloorToInt(Random.Range(0,(int) ListEnem.Count));
-				Selected = ListEnem[Selected];
-				Debug.Log(Selected);
-				
-				if (Selected == (int) Constants.EnemiesNames.HunterA)
+			#region Spawner Power Up's
+			if (SpawnPowerLastTime >= SpawnPowerTimer)
+			{
+				if(Statics.CountPowers < Constants.MAX_POWER_VIEW)
 				{
-					EnemyName = "HunterA";
-					Debug.Log("HunterA");
-				}
-				else if (Selected == (int) Constants.EnemiesNames.HunterB)
-				{
-					EnemyName = "HunterA";
-					Debug.Log("HunterB");
-				}
-				else if (Selected == (int) Constants.EnemiesNames.HunterC)
-				{
-					EnemyName = "HunterA";
-					Debug.Log("HunterC");
-				}
-				else if (Selected == (int) Constants.EnemiesNames.HunterD)
-				{
-					EnemyName = "HunterA";
-					Debug.Log("HunterD");
-				}
-				
-				if (EnemyName!=null)
-				{
+					SpawnPowerLastTime = 0;
+					string PowerName = null;
 					
-					gameObject.transform.position = new Vector3(Random.Range(Statics.Player.transform.position.x - 50,Statics.Player.transform.position.x + 50),
-																gameObject.transform.position.y,
-																Random.Range(Statics.Player.transform.position.z + 50,Statics.Player.transform.position.z + 150));
-					Statics.Instantiate(EnemyName,gameObject.transform.position,GameObject.FindGameObjectWithTag(Constants.TAG_ENEMIES).transform);
+					for (int i = 0; i < (int) Constants.PowerNames.Max; i++) {
+						if(prob <= Powers[i,Statics.CurrentLevel-1])
+						{
+							ListPower.Add(i);
+						}
+					}
+					
+					if(ListPower.Count != 0)
+					{
+						Selected = Mathf.FloorToInt(Random.Range(0,(int) ListPower.Count));
+						Selected = ListPower[Selected];
+						
+						if (Selected == (int)Constants.PowerNames.Heal) 
+						{
+							PowerName = "Heal";
+							Debug.Log("Heal");
+						}
+						else if (Selected == (int)Constants.PowerNames.Speed) 
+						{
+							PowerName = "Speed";
+							Debug.Log("Speed");
+						}
+						else if (Selected == (int)Constants.PowerNames.Attack) 
+						{
+							PowerName = "Attack";
+							Debug.Log("Attack");
+						}
+						else if (Selected == (int)Constants.PowerNames.Free) 
+						{
+							PowerName = "Free";
+							Debug.Log("Free");
+						}
+						
+						if (PowerName != null)
+						{
+							gameObject.transform.position= new Vector3(Random.Range(Statics.Player.transform.position.x - 50,Statics.Player.transform.position.x + 50),
+																			gameObject.transform.position.y,
+																			Random.Range(Statics.Player.transform.position.z + 50,Statics.Player.transform.position.z + 150));
+							Statics.InstantiatePower("Power",gameObject.transform.position,GameObject.FindGameObjectWithTag(Constants.TAG_POWER).transform, PowerName );
+							Statics.CountPowers ++;
+						}
+					}
 				}
 			}
+			#endregion
 		}
 	}
 }

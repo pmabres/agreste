@@ -10,7 +10,11 @@ public static class Constants {
 	public const string NAME_TREES = "Tree";	
 	public const string TAG_GAMEOVER = "GameOver";
 	public const string TAG_MENU = "Menu";
-	public const string TAG_HUD = "HUD";	
+	public const string TAG_HUD = "HUD";
+	public const string TAG_POWER = "Powers";
+	public const int MAX_POWER_VIEW = 5;
+	
+	
 	public const int WIDESCREEN_IDEAL_WIDTH = 475;
 	public const float TOUCH_SCREEN_WIDTH_PROPORTION = 0.21f; 
 	public const float TOUCH_SCREEN_HEIGHT_PROPORTION = 0.185f;
@@ -24,5 +28,15 @@ public static class Constants {
 		HunterD= 3,
 		HunterE=4,
 		Max = 5
+	}
+	
+	public enum PowerNames
+	{
+		Min=0,
+		Heal= 0,
+		Speed= 1,
+		Attack= 2,
+		Free= 3,
+		Max= 4
 	}
 }

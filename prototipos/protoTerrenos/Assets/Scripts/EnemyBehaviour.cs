@@ -21,8 +21,15 @@ public class EnemyBehaviour : MonoBehaviour {
     {
         if (collider.gameObject.tag == Constants.TAG_PLAYER && !hitted)
         {			
-            collider.gameObject.GetComponent<PlayerBehaviour>().HitPoints -= Damage;
-			hitted=true;
+			if(collider.gameObject.GetComponent<PlayerBehaviour>().Attack)
+			{
+				//Debug.Log("salvado");
+			}
+			else
+			{
+            	collider.gameObject.GetComponent<PlayerBehaviour>().HitPoints -= Damage;
+				hitted=true;
+			}
         }
     }
 	

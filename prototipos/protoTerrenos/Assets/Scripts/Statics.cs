@@ -14,7 +14,16 @@ public static class Statics
 	public static bool AccelerometerActive=false;
 	public static bool Paused=false;	
 	public static float Meters=0;
-	public static int CurrentLevel=0;	
+	public static int CurrentLevel=0;
+	
+	//Variables del Personaje
+	public static int MaxHealt = 3;
+	public static float MaxTimeSpeed = 8;
+	public static int CountPowers=0;
+	public static int TimeAttack=5;
+	public static int TimeFree=10;
+	public static bool FreeRoad=false;
+	
 	public static GameObject Instantiate(string tag)
 	{		
 		return MonoBehaviour.Instantiate(Resources.Load(Constants.RESOURCES_FOLDER+tag)) as GameObject;
@@ -24,6 +33,15 @@ public static class Statics
 		GameObject tmp = MonoBehaviour.Instantiate (Resources.Load(Constants.RESOURCES_FOLDER+tag)) as GameObject;
 		tmp.transform.position = position;
 		tmp.transform.parent = Parent;
+		return tmp;
+		
+	}
+	public static GameObject InstantiatePower(string tag,Vector3 position, Transform Parent, string Name)
+	{				
+		GameObject tmp = MonoBehaviour.Instantiate (Resources.Load(Constants.RESOURCES_FOLDER+tag)) as GameObject;
+		tmp.transform.position = position;
+		tmp.transform.parent = Parent;
+		tmp.name = Name;
 		return tmp;
 		
 	}	
