@@ -7,7 +7,9 @@ public static class Constants {
 	public const string TAG_TERRAIN = "Terrain";
 	public const string TAG_PLAYER = "Player";
 	public const string TAG_MAIN = "Main";	
-	public const string NAME_TREES = "Tree";	
+	public const string NAME_TREE = "Tree";	
+	public const string NAME_TREE2 = "Tree2";
+	public const string NAME_TREE3 = "Tree3";
 	public const string TAG_GAMEOVER = "GameOver";
 	public const string TAG_MENU = "Menu";
 	public const string TAG_HUD = "HUD";

@@ -162,7 +162,19 @@ public class Terrains:MonoBehaviour
 		{
 			int x =  Mathf.FloorToInt(Random.Range(terrain[i].Field.transform.position.x-terrain[i].Field.transform.localScale.x/2,terrain[i].Field.transform.position.x+terrain[i].Field.transform.localScale.x/2));
 			int z =  Mathf.FloorToInt(Random.Range(terrain[i].Field.transform.position.z-terrain[i].Field.transform.localScale.z/2,terrain[i].Field.transform.position.z+terrain[i].Field.transform.localScale.z/2));
-			Statics.Instantiate(Constants.NAME_TREES,new Vector3(x,0,z),terrain[i].Field.transform);	
+			int Selected = Mathf.FloorToInt(Random.Range(1,4));
+			if(Selected==1)
+			{	
+				Statics.Instantiate(Constants.NAME_TREE,new Vector3(x,0,z),terrain[i].Field.transform);	
+			}
+			else if(Selected==2)
+			{
+				Statics.Instantiate(Constants.NAME_TREE2,new Vector3(x,0,z),terrain[i].Field.transform);	
+			}
+			else if(Selected==3)
+			{
+				Statics.Instantiate(Constants.NAME_TREE3,new Vector3(x,0,z),terrain[i].Field.transform);	
+			}
 		}
 		
 	}
