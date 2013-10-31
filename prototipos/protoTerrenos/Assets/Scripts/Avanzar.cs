@@ -24,8 +24,8 @@ public class Avanzar : MonoBehaviour
 				if (Speed) {
 					TimeSpeed += Time.deltaTime;
 					if(TimeSpeed<Statics.MaxTimeSpeed){
-						motor.movement.maxForwardSpeed += 0.8f;
-						motor.movement.maxSidewaysSpeed += 0.5f;
+						motor.movement.maxForwardSpeed += 0.8f + Statics.Velocity;
+						motor.movement.maxSidewaysSpeed += 0.5f + Statics.Agility;
 						
 						if(motor.movement.maxForwardSpeed > 20)
 							motor.movement.maxForwardSpeed = 20;
@@ -41,8 +41,8 @@ public class Avanzar : MonoBehaviour
 				}
 				else
 				{
-					motor.movement.maxForwardSpeed += 0.4f;
-					motor.movement.maxSidewaysSpeed += 0.2f;
+					motor.movement.maxForwardSpeed += 0.4f + Statics.Velocity;
+					motor.movement.maxSidewaysSpeed += 0.2f + Statics.Agility;
 					if(motor.movement.maxForwardSpeed > 10)
 						motor.movement.maxForwardSpeed = 10;
 				

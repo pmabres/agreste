@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class PlayerBehaviour : MonoBehaviour {	
@@ -14,7 +14,7 @@ public class PlayerBehaviour : MonoBehaviour {
 	}
 	void Start()
 	{
-		HitPoints = Statics.MaxHealt;
+		HitPoints = Statics.MaxHealth;
 	}
 	// Update is called once per frame
 	void FixedUpdate () 

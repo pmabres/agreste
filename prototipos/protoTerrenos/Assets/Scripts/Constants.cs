@@ -21,6 +21,16 @@ public static class Constants {
 	public const float TOUCH_SCREEN_WIDTH_PROPORTION = 0.21f; 
 	public const float TOUCH_SCREEN_HEIGHT_PROPORTION = 0.185f;
 	
+	public enum SecMission
+	{
+		Min=0,
+		CantMts = 0,
+		CantEnem = 1,
+		CantMtsSPW = 2,
+		CantMtsSDN = 3,
+		Max = 4
+	}
+	
 	public enum EnemiesNames
 	{
 		Min = 0,

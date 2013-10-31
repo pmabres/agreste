@@ -144,27 +144,27 @@ public class SpawnerBehaviour : MonoBehaviour {
 					if (Selected == (int) Constants.EnemiesNames.HunterA)
 					{
 						EnemyName = "HunterA";
-						Debug.Log("NiñoPalo");
+						//Debug.Log("NiñoPalo");
 					}
 					else if (Selected == (int) Constants.EnemiesNames.HunterB)
 					{
 						EnemyName = "HunterA";
-						Debug.Log("NiñoGomera");
+						//Debug.Log("NiñoGomera");
 					}
 					else if (Selected == (int) Constants.EnemiesNames.HunterC)
 					{
 						EnemyName = "HunterA";
-						Debug.Log("CazadorMach");
+						//Debug.Log("CazadorMach");
 					}
 					else if (Selected == (int) Constants.EnemiesNames.HunterD)
 					{
 						EnemyName = "HunterA";
-						Debug.Log("CazadorRif");
+						//Debug.Log("CazadorRif");
 					}
 					else if (Selected == (int) Constants.EnemiesNames.HunterE)
 					{
 						EnemyName = "HunterA";
-						Debug.Log("Perro");
+						//Debug.Log("Perro");
 					}
 					
 					if (EnemyName!=null)
@@ -202,22 +202,22 @@ public class SpawnerBehaviour : MonoBehaviour {
 						if (Selected == (int)Constants.PowerNames.Heal) 
 						{
 							PowerName = "Heal";
-							Debug.Log("Heal");
+							//Debug.Log("Heal");
 						}
 						else if (Selected == (int)Constants.PowerNames.Speed) 
 						{
 							PowerName = "Speed";
-							Debug.Log("Speed");
+							//Debug.Log("Speed");
 						}
 						else if (Selected == (int)Constants.PowerNames.Attack) 
 						{
 							PowerName = "Attack";
-							Debug.Log("Attack");
+							//Debug.Log("Attack");
 						}
 						else if (Selected == (int)Constants.PowerNames.Free) 
 						{
 							PowerName = "Free";
-							Debug.Log("Free");
+							//Debug.Log("Free");
 						}
 						
 						if (PowerName != null)

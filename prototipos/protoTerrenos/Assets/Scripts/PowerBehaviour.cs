@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class PowerBehaviour : MonoBehaviour {
@@ -29,7 +29,7 @@ public class PowerBehaviour : MonoBehaviour {
         if (collider.gameObject.tag == Constants.TAG_PLAYER && !hitted)
         {			
 			if (this.name == "Heal") {
-				if(collider.gameObject.GetComponent<PlayerBehaviour>().HitPoints < Statics.MaxHealt)
+				if(collider.gameObject.GetComponent<PlayerBehaviour>().HitPoints < Statics.MaxHealth)
 					collider.gameObject.GetComponent<PlayerBehaviour>().HitPoints += 1;
 			}
 			else if (this.name == "Speed") {

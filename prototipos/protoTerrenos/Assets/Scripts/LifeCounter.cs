@@ -13,6 +13,15 @@ public class LifeCounter : MonoBehaviour {
 		if (!Statics.Paused)
 		{			
 			gameObject.GetComponent<TextMesh>().text = "Vida: " + Mathf.FloorToInt(Statics.Player.GetComponent<PlayerBehaviour>().HitPoints);
+			
+			if(Mathf.FloorToInt(Statics.Player.GetComponent<PlayerBehaviour>().HitPoints)<=0)
+			{
+				if(Statics.Meters > Statics.MaxScore)
+				{
+					Statics.MaxScore = Statics.Meters;
+					PlayerPrefs.SetFloat("MaxScore",Statics.Meters);
+				}
+			}
 		}
 	}
 }
