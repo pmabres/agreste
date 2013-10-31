@@ -14,7 +14,7 @@ public static class Constants {
 	public const string TAG_MENU = "Menu";
 	public const string TAG_HUD = "HUD";
 	public const string TAG_POWER = "Powers";
-	public const int MAX_POWER_VIEW = 5;
+	public const int MAX_POWER_VIEW = 3;
 	
 	
 	public const int WIDESCREEN_IDEAL_WIDTH = 475;
@@ -34,11 +34,11 @@ public static class Constants {
 	public enum EnemiesNames
 	{
 		Min = 0,
-		HunterA = 0,
-		HunterB= 1,
-		HunterC= 2,
-		HunterD= 3,
-		HunterE=4,
+		NinoPalo = 0,
+		NinoGomera= 1,
+		Cazador= 2,
+		CazadorRifle= 3,
+		Perro=4,
 		Max = 5
 	}
 	

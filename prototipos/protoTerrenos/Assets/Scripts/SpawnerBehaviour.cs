@@ -141,29 +141,29 @@ public class SpawnerBehaviour : MonoBehaviour {
 					Selected = Mathf.FloorToInt(Random.Range(0,(int) ListEnem.Count));
 					Selected = ListEnem[Selected];
 					
-					if (Selected == (int) Constants.EnemiesNames.HunterA)
+					if (Selected == (int) Constants.EnemiesNames.NinoPalo)
 					{
-						EnemyName = "HunterA";
+						EnemyName = "NinoPalo";
 						//Debug.Log("NiñoPalo");
 					}
-					else if (Selected == (int) Constants.EnemiesNames.HunterB)
+					else if (Selected == (int) Constants.EnemiesNames.NinoGomera)
 					{
-						EnemyName = "HunterA";
+						EnemyName = "NinoGomera";
 						//Debug.Log("NiñoGomera");
 					}
-					else if (Selected == (int) Constants.EnemiesNames.HunterC)
+					else if (Selected == (int) Constants.EnemiesNames.Cazador)
 					{
-						EnemyName = "HunterA";
+						EnemyName = "Cazador";
 						//Debug.Log("CazadorMach");
 					}
-					else if (Selected == (int) Constants.EnemiesNames.HunterD)
+					else if (Selected == (int) Constants.EnemiesNames.CazadorRifle)
 					{
-						EnemyName = "HunterA";
+						EnemyName = "CazadorRifle";
 						//Debug.Log("CazadorRif");
 					}
-					else if (Selected == (int) Constants.EnemiesNames.HunterE)
+					else if (Selected == (int) Constants.EnemiesNames.Perro)
 					{
-						EnemyName = "HunterA";
+						EnemyName = "Perro";
 						//Debug.Log("Perro");
 					}
 					
@@ -173,7 +173,8 @@ public class SpawnerBehaviour : MonoBehaviour {
 						gameObject.transform.position = new Vector3(Random.Range(Statics.Player.transform.position.x - 50,Statics.Player.transform.position.x + 50),
 																	gameObject.transform.position.y,
 																	Random.Range(Statics.Player.transform.position.z + 50,Statics.Player.transform.position.z + 150));
-						Statics.Instantiate(EnemyName,gameObject.transform.position,GameObject.FindGameObjectWithTag(Constants.TAG_ENEMIES).transform);
+						GameObject enem = Statics.Instantiate(EnemyName,gameObject.transform.position,GameObject.FindGameObjectWithTag(Constants.TAG_ENEMIES).transform);
+						enem.GetComponent<EnemyBehaviour>().EnemiType = Selected;
 					}
 				}
 			}

@@ -19,7 +19,7 @@ public static class Statics
 	public static float MaxScore= PlayerPrefs.GetFloat("MaxScore");
 	
 	//Variables del Personaje
-	public static int MaxHealth = PlayerPrefs.GetInt("Health")+1;
+	public static int MaxHealth = PlayerPrefs.GetInt("Health")==0?2:PlayerPrefs.GetInt("Health");
 	public static float Agility = PlayerPrefs.GetFloat("Agility");
 	public static float Velocity = PlayerPrefs.GetFloat("Velocity");
 	public static int Level = PlayerPrefs.GetInt("Level")+1;
