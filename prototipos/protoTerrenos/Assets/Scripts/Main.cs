@@ -42,12 +42,18 @@ public class Main : MonoBehaviour
 				Statics.GameOver.SetActive(true);
 				Statics.HUD.SetActive(false);
 				Statics.Menu.SetActive(false);
+				gameObject.GetComponent<GameProgression>().Save();
 			}
 		}
 		if (Statics.RestartGame)
 		{
-			Application.LoadLevel(Application.loadedLevelName);
+			gameObject.GetComponent<GameProgression>().Save();
 			Statics.RestartGame = false;
-		}
+			Application.LoadLevel(Application.loadedLevelName);			
+			Statics.Paused = true;
+			Statics.GameOver.SetActive(false);
+			Statics.HUD.SetActive(true);
+			Statics.Menu.SetActive(true);
+		}		
 	}
 }
