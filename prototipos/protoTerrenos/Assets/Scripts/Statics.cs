@@ -13,16 +13,16 @@ public static class Statics
 	public static TerrainList Terrains;
 	public static bool AccelerometerActive=false;
 	public static bool Paused=false;	
-	public static float Meters=0;
+	public static int Meters=0;
 	public static int CurrentLevel=0;
 	//Variable para guardar el High Score
-	public static float MaxScore= PlayerPrefs.GetFloat("MaxScore");
-	
+	public static int MaxScore;
+	//Guarda las patitas que tiene el personaje
+	public static int Paws;
 	//Variables del Personaje
-	public static int MaxHealth = PlayerPrefs.GetInt("Health")==0?2:PlayerPrefs.GetInt("Health");
-	public static float Agility = PlayerPrefs.GetFloat("Agility");
-	public static float Velocity = PlayerPrefs.GetFloat("Velocity");
-	public static int Level = PlayerPrefs.GetInt("Level")+1;
+	public static int MaxHealth;
+	public static float Agility;
+	public static float Velocity;	
 	public static float MaxTimeSpeed = 8;
 	public static int CountPowers=0;
 	public static int TimeAttack=5;
@@ -34,21 +34,18 @@ public static class Statics
 		return MonoBehaviour.Instantiate(Resources.Load(Constants.RESOURCES_FOLDER+tag)) as GameObject;
 	}
 	public static GameObject Instantiate(string tag,Vector3 position, Transform Parent)
-	{				
-		GameObject tmp = MonoBehaviour.Instantiate (Resources.Load(Constants.RESOURCES_FOLDER+tag)) as GameObject;
+	{						
+		GameObject tmp = Instantiate(tag);
 		tmp.transform.position = position;
 		tmp.transform.parent = Parent;
 		return tmp;
 		
 	}
-	public static GameObject InstantiatePower(string tag,Vector3 position, Transform Parent, string Name)
+	public static GameObject Instantiate(string tag,Vector3 position, Transform Parent, string Name)
 	{				
-		GameObject tmp = MonoBehaviour.Instantiate (Resources.Load(Constants.RESOURCES_FOLDER+tag)) as GameObject;
-		tmp.transform.position = position;
-		tmp.transform.parent = Parent;
+		GameObject tmp = Instantiate(tag,position,Parent);		
 		tmp.name = Name;
-		return tmp;
-		
+		return tmp;		
 	}	
 	
 }

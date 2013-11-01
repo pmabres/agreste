@@ -9,8 +9,8 @@ public class MissionsBehaviour : MonoBehaviour {
 	void Start () {
 		for (int i = 0; i < 3; i++) {
 			int selected = Mathf.FloorToInt(Random.Range((float)Constants.SecMission.Min,(float)Constants.SecMission.Max));
-			int Mts = Random.Range((Statics.Level * 100)/(5 * Statics.Level), (Statics.Level*100));
-			int Enem = Random.Range((Statics.Level * 100)/(5 * Statics.Level), (Statics.Level*100));
+			int Mts = 0;//Random.Range((Statics.Level * 100)/(5 * Statics.Level), (Statics.Level*100));
+			int Enem = 0;//Random.Range((Statics.Level * 100)/(5 * Statics.Level), (Statics.Level*100));
 			if(selected == (int) Constants.SecMission.CantMts)
 			{
 				AuxMission.Insert(1,"Recorrer " + Mts + " Mts.");

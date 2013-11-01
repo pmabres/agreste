@@ -17,10 +17,10 @@ public class MetersCounter : MonoBehaviour {
 	void FixedUpdate () {
 		if (!Statics.Paused)
 		{			
-			gameObject.GetComponent<TextMesh>().text = "Metros: " + Mathf.FloorToInt(Statics.Meters);
+			gameObject.GetComponent<TextMesh>().text = "Metros: " + Statics.Meters;
 			if(gameObject.GetComponent<TextMesh>().CompareTag("HighScore"))
 			{
-				gameObject.GetComponent<TextMesh>().text = "High Score: " + Mathf.FloorToInt(Statics.MaxScore);
+				gameObject.GetComponent<TextMesh>().text = "High Score: " + Statics.MaxScore;
 			}
 		}
 	}

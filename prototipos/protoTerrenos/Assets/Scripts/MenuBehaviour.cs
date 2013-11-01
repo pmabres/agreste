@@ -42,6 +42,7 @@ public class MenuBehaviour : MonoBehaviour {
 		{
 			Statics.Paused = true;
 			Statics.Menu.SetActive(true);
+			GameObject.FindGameObjectWithTag(Constants.TAG_MAIN).GetComponent<GameProgression>().Save();
 		}	
 		else if (Input.GetKeyDown(KeyCode.Escape) && Statics.Paused)
 		{

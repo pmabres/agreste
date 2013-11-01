@@ -24,7 +24,7 @@ public class PlayerBehaviour : MonoBehaviour {
 	{		
 		if (!Statics.Paused)
 		{					
-			Statics.Meters = gameObject.transform.position.z;
+			Statics.Meters = (int) gameObject.transform.position.z;
 			if(Attack)
 			{
 				TimeAttack += Time.deltaTime;

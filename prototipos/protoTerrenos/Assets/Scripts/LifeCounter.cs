@@ -18,8 +18,7 @@ public class LifeCounter : MonoBehaviour {
 			{
 				if(Statics.Meters > Statics.MaxScore)
 				{
-					Statics.MaxScore = Statics.Meters;
-					PlayerPrefs.SetFloat("MaxScore",Statics.Meters);
+					Statics.MaxScore = Statics.Meters;					
 				}
 			}
 		}
