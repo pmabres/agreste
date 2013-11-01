@@ -6,7 +6,10 @@ public class PlayerBehaviour : MonoBehaviour {
 	public bool Attack = false;
 	public float TimeAttack = 0;
 	public float TimeFree = 0;
+	public float TimeHit = 0;
+	public bool Hitted = false;
 	public int HitPoints;
+	public float ImpulseH;
 	
 	void Awake () 
 	{
@@ -35,6 +38,38 @@ public class PlayerBehaviour : MonoBehaviour {
 				if(TimeFree >= Statics.TimeFree)
 				{Statics.FreeRoad = false; TimeFree=0;}
 			}
+			
+			if(ImpulseH !=0)
+			{
+				if(ImpulseH < 0)
+				{
+					ImpulseH += 0.75f;
+					if (ImpulseH > 0) ImpulseH = 0;
+				}
+				else if(ImpulseH >0)
+				{
+					ImpulseH -= 0.75f;
+					if (ImpulseH < 0) ImpulseH = 0;
+				}
+			}
+			
+			if(Hitted)
+			{
+				TimeHit += Time.deltaTime;
+				if(TimeHit >= 2000)
+					Hitted=false;
+			}
 		}		
+	}
+	void OnTriggerEnter(Collider collider)
+    {
+		if (collider.gameObject.tag == Constants.TAG_TREE)
+		{
+			Debug.Log("Entra");
+			if(gameObject.transform.position.x < collider.gameObject.transform.position.x)
+				ImpulseH = 3;
+			else if (gameObject.transform.position.x > collider.gameObject.transform.position.x)
+				ImpulseH = -3;
+		}
 	}
 }

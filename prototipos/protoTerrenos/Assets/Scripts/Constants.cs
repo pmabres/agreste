@@ -6,7 +6,8 @@ public static class Constants {
 	public const string TAG_ENEMIES = "Enemies";
 	public const string TAG_TERRAIN = "Terrain";
 	public const string TAG_PLAYER = "Player";
-	public const string TAG_MAIN = "Main";	
+	public const string TAG_MAIN = "Main";
+	public const string TAG_TREE = "Tree";
 	public const string NAME_TREE = "Tree";	
 	public const string NAME_TREE2 = "Tree2";
 	public const string NAME_TREE3 = "Tree3";
@@ -16,6 +17,20 @@ public static class Constants {
 	public const string TAG_POWER = "Powers";
 	public const int MAX_POWER_VIEW = 3;
 	
+	//Speed enemigos
+	public const float SPEED_NINO_PALO = 0.02f;
+	public const float SPEED_NINO_GOMERA = 0;
+	public const float SPEED_CAZADOR = 0.05f;
+	public const float SPEED_CAZADOR_RIFLE = 0.02f;
+	public const float SPEED_PERRO = 0.25f;
+	
+	//Daño Enemigos
+	public const int DAMAGE_NINO_PALO = 1;
+	public const int DAMAGE_NINO_GOMERA = 1;
+	public const int DAMAGE_CAZADOR = 2;
+	public const int DAMAGE_CAZADOR_RIFLE = 3;
+	public const int DAMAGE_PERRO = 4;
+		
 	
 	public const int WIDESCREEN_IDEAL_WIDTH = 475;
 	public const float TOUCH_SCREEN_WIDTH_PROPORTION = 0.21f; 
