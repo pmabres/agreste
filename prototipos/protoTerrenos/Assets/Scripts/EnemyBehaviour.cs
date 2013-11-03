@@ -99,6 +99,7 @@ public class EnemyBehaviour : MonoBehaviour {
             		collider.gameObject.GetComponent<PlayerBehaviour>().HitPoints -= Constants.DAMAGE_PERRO;
 				}
 				collider.gameObject.GetComponent<PlayerBehaviour>().Hitted=true;
+				Statics.Hit.SetActive(true);
 			}
         }
 		else if(collider.gameObject.tag == Constants.TAG_TREE)

@@ -12,7 +12,9 @@ public class Main : MonoBehaviour
 		Statics.Menu = GameObject.FindGameObjectWithTag(Constants.TAG_MENU);
 		Statics.GameOver = GameObject.FindGameObjectWithTag(Constants.TAG_GAMEOVER);
 		Statics.HUD = GameObject.FindGameObjectWithTag(Constants.TAG_HUD);
+		Statics.Hit = GameObject.FindGameObjectWithTag("RedScreen");
 		Statics.GameOver.SetActive(false);
+		Statics.Hit.SetActive(false);
 	}
 	void Start () 
 	{		
@@ -54,6 +56,6 @@ public class Main : MonoBehaviour
 			Statics.GameOver.SetActive(false);
 			Statics.HUD.SetActive(true);
 			Statics.Menu.SetActive(true);
-		}		
+		}	
 	}
 }

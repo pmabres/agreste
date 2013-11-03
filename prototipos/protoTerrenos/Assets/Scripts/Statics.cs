@@ -8,6 +8,7 @@ public static class Statics
 	public static GameObject Menu;
 	public static GameObject GameOver;
 	public static GameObject HUD;
+	public static GameObject Hit;
 	public static bool RestartGame=false;
 	public static int TreesPerTerrain=35;
 	public static TerrainList Terrains;

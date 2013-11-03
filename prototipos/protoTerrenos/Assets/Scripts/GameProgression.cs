@@ -14,7 +14,7 @@ public class GameProgression : MonoBehaviour {
 		if (PlayerPrefs.GetInt("MaxHealth") != 0)
 		{
 			Statics.MaxScore = PlayerPrefs.GetInt("MaxScore");		
-			Statics.MaxHealth = PlayerPrefs.GetInt("MaxHealth");
+			Statics.MaxHealth = PlayerPrefs.GetInt("MaxHealth") + 1;
 			Statics.Agility = PlayerPrefs.GetFloat("Agility");
 			Statics.Velocity = PlayerPrefs.GetFloat("Velocity");	
 			Statics.Paws = PlayerPrefs.GetInt("Paws");
