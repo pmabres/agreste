@@ -57,7 +57,10 @@ public class PlayerBehaviour : MonoBehaviour {
 			{
 				TimeHit += Time.deltaTime;
 				if(TimeHit >= 2000)
+				{	
 					Hitted=false;
+					TimeHit =0 ;
+				}
 			}
 		}		
 	}
@@ -65,11 +68,16 @@ public class PlayerBehaviour : MonoBehaviour {
     {
 		if (collider.gameObject.tag == Constants.TAG_TREE)
 		{
-			Debug.Log("Entra");
+			gameObject.transform.position -= new Vector3 (0,0,0.75f);
 			if(gameObject.transform.position.x < collider.gameObject.transform.position.x)
-				ImpulseH = 3;
-			else if (gameObject.transform.position.x > collider.gameObject.transform.position.x)
+			{
 				ImpulseH = -3;
+			}
+			else if (gameObject.transform.position.x > collider.gameObject.transform.position.x)
+			{
+				ImpulseH = 3;
+			}
+			
 		}
 	}
 }
