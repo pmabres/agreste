@@ -5,7 +5,7 @@ public class GameProgression : MonoBehaviour {
 	//int PawCoins=0;
 	// Use this for initialization
 	//Variable para guardar el High Score	
-	void Start () 
+	void Awake () 
 	{	
 		Load();
 	}
