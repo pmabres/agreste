@@ -6,7 +6,6 @@ public class Avanzar : MonoBehaviour
 	private CharacterMotor motor;
 	public bool Speed = false;
 	private float TimeSpeed =0;
-
 	public bool corriendo=true;	
 	// Use this for initialization
 	void Start () 
