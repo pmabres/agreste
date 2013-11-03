@@ -38,14 +38,7 @@ public class EnemyBehaviour : MonoBehaviour {
 			}
 			else if (EnemiType == (int) Constants.EnemiesNames.Perro)
 			{
-				if(gameObject.transform.position.x < Statics.Player.transform.position.x)
-				{
-					gameObject.transform.position = gameObject.transform.position - new Vector3(-0.05f + ImpulseH,0,Constants.SPEED_PERRO);		
-				}
-				else if(gameObject.transform.position.x > Statics.Player.transform.position.x)
-				{
-					gameObject.transform.position = gameObject.transform.position - new Vector3(0.05f + ImpulseH,0,Constants.SPEED_PERRO);		
-				}
+				ChasePlayer();
 			}
 			if(ImpulseH !=0)
 			{
@@ -63,6 +56,17 @@ public class EnemyBehaviour : MonoBehaviour {
 		}
 	}
 	
+	void ChasePlayer()
+	{
+		if(gameObject.transform.position.x < Statics.Player.transform.position.x)
+				{
+					gameObject.transform.position = gameObject.transform.position - new Vector3(-0.05f + ImpulseH,0,Constants.SPEED_PERRO);		
+				}
+				else if(gameObject.transform.position.x > Statics.Player.transform.position.x)
+				{
+					gameObject.transform.position = gameObject.transform.position - new Vector3(0.05f + ImpulseH,0,Constants.SPEED_PERRO);		
+				}
+	}
 	void OnTriggerEnter(Collider collider)
     {
         if (collider.gameObject.tag == Constants.TAG_PLAYER && !collider.gameObject.GetComponent<PlayerBehaviour>().Hitted)
