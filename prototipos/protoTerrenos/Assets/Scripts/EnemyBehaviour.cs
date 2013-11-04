@@ -6,13 +6,9 @@ public class EnemyBehaviour : MonoBehaviour {
 	public float Speed;
 	bool hitted=false;
 	float ImpulseH = 0;
-		
-	public int EnemyType {
-		get;
-		set;
-	}
+	public int EnemyType {get;set;}
 	// Use this for initialization
-	void Awake () 
+	void Start() 
 	{
 		if(EnemyType == (int) Constants.EnemiesNames.NinoPalo)
 		{
@@ -67,7 +63,12 @@ public class EnemyBehaviour : MonoBehaviour {
 			}
 		}
 	}
-	
+	public void Hit()
+	{
+		Statics.Player.GetComponent<PlayerBehaviour>().HitPoints -= Damage;
+		Statics.Player.GetComponent<PlayerBehaviour>().Hitted=true;
+		Statics.Hit.SetActive(true);
+	}
 	void ChasePlayer()
 	{
 		if (EnemyType == (int) Constants.EnemiesNames.Perro)
@@ -97,9 +98,7 @@ public class EnemyBehaviour : MonoBehaviour {
 			}
 			else
 			{
-            	collider.gameObject.GetComponent<PlayerBehaviour>().HitPoints -= Damage;
-				collider.gameObject.GetComponent<PlayerBehaviour>().Hitted=true;
-				Statics.Hit.SetActive(true);
+            	Hit();
 			}
         }
 		else if(collider.gameObject.tag == Constants.TAG_TREE)

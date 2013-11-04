@@ -145,12 +145,13 @@ public class SpawnerBehaviour : MonoBehaviour {
 					if (Selected == (int) Constants.EnemiesNames.NinoPalo)
 					{
 						EnemyName = "NinoPalo";
-						//Debug.Log("NiñoPalo");
+						//Debug.Log("NiñoPalo");						
 					}
 					else if (Selected == (int) Constants.EnemiesNames.NinoGomera)
 					{
 						EnemyName = "NinoGomera";
 						child = Statics.Instantiate("Aura");
+						child.GetComponent<AuraBehaviour>().speed = 1;
 						//Debug.Log("NiñoGomera");
 					}
 					else if (Selected == (int) Constants.EnemiesNames.Cazador)
@@ -163,6 +164,7 @@ public class SpawnerBehaviour : MonoBehaviour {
 						EnemyName = "CazadorRifle";
 						child = Statics.Instantiate("Aura");
 						child.transform.localScale = new Vector3(30,1,30); // aumento la escala del aura del adulto
+						child.GetComponent<AuraBehaviour>().speed = 0.7f;
 						//Debug.Log("CazadorRif");
 					}
 					else if (Selected == (int) Constants.EnemiesNames.Perro)

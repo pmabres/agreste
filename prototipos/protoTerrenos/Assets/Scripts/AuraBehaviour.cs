@@ -3,11 +3,13 @@ using System.Collections;
 
 public class AuraBehaviour : MonoBehaviour {
 	// Use this for initialization
+	public float speed=0;
 	private Color c;
 	private float end=0;
 	private float time=0.2f;
 	private bool activated=false;
 	private bool fire=false;
+	
 	void Awake()
 	{			
 		c = gameObject.renderer.material.color;
@@ -25,7 +27,7 @@ public class AuraBehaviour : MonoBehaviour {
 		if (activated) 
 		{
 			end = 1.2f;
-			time = 0.2f;
+			time = speed;
 			if (c.a >= 1)
 			{
 				fire=true;
@@ -55,7 +57,7 @@ public class AuraBehaviour : MonoBehaviour {
 	{
 		if (activated && collider.gameObject == Statics.Player && fire)
 		{
-			Statics.Player.GetComponent<PlayerBehaviour>().HitPoints --;
+			gameObject.transform.parent.GetComponent<EnemyBehaviour>().Hit();			
 			activated = false;
 			fire = false;
 		}
