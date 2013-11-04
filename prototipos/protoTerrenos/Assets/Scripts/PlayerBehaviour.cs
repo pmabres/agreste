@@ -7,10 +7,12 @@ public class PlayerBehaviour : MonoBehaviour {
 	public float TimeAttack = 0;
 	public float TimeFree = 0;
 	public float TimeHit = 0;
+	public float TimeHitTree =0;
 	public bool Hitted = false;
+	public bool HittedTree = false;
 	public int HitPoints;
 	public float ImpulseH;
-	
+	public float rotate = 0;
 	void Awake () 
 	{
 		Statics.Player = gameObject;
@@ -56,28 +58,41 @@ public class PlayerBehaviour : MonoBehaviour {
 			if(Hitted)
 			{
 				TimeHit += Time.deltaTime;
-				if(TimeHit >= 2000)
+				if(TimeHit >= 1.5f)
 				{	
 					Hitted=false;
+					Statics.Hit.SetActive(false);
 					TimeHit =0 ;
+				}
+			}
+			
+			if(HittedTree)
+			{
+				TimeHitTree += Time.deltaTime;
+				if(TimeHitTree >= 1.5f)
+				{
+					HittedTree = false;
+					TimeHitTree =0;
 				}
 			}
 		}		
 	}
 	void OnTriggerEnter(Collider collider)
     {
-		if (collider.gameObject.tag == Constants.TAG_TREE)
-		{
+		if (collider.gameObject.tag == Constants.TAG_TREE && !HittedTree)
+		{			
 			gameObject.transform.position -= new Vector3 (0,0,0.75f);
 			if(gameObject.transform.position.x < collider.gameObject.transform.position.x)
 			{
-				ImpulseH = -3;
+				ImpulseH = -2.8f;
+				//rotate = 1.75f;
 			}
 			else if (gameObject.transform.position.x > collider.gameObject.transform.position.x)
 			{
-				ImpulseH = 3;
+				ImpulseH = 2.8f;
+				//rotate = -1.75f;
 			}
-			
+			//gameObject.transform.Rotate(new Vector3(0,0,rotate));
 		}
 	}
 }

@@ -12,7 +12,7 @@ public class Recycler : MonoBehaviour {
 	void FixedUpdate () {
 		if (!Statics.Paused)
 		{
-			if (gameObject.transform.position.z < Statics.Player.transform.position.z)
+			if (gameObject.transform.position.z < Statics.Player.transform.position.z - 15)
 			{
 				if(gameObject.tag == "Power")
 				{

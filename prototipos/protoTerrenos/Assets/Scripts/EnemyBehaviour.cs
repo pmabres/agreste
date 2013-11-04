@@ -7,49 +7,61 @@ public class EnemyBehaviour : MonoBehaviour {
 	bool hitted=false;
 	float ImpulseH = 0;
 		
-	public int EnemiType {
+	public int EnemyType {
 		get;
 		set;
 	}
 	// Use this for initialization
-	void Start () {
-	
+	void Awake () 
+	{
+		if(EnemyType == (int) Constants.EnemiesNames.NinoPalo)
+		{
+			Speed = Constants.SPEED_NINO_PALO;
+			Damage = Constants.DAMAGE_NINO_PALO;
+		}
+		else if (EnemyType == (int) Constants.EnemiesNames.NinoGomera)
+		{
+			Speed = Constants.SPEED_NINO_GOMERA;				
+			Damage = Constants.DAMAGE_NINO_GOMERA;
+		}
+		else if (EnemyType == (int) Constants.EnemiesNames.Cazador)
+		{
+			Speed = Constants.SPEED_CAZADOR;				
+			Damage = Constants.DAMAGE_CAZADOR;
+		}
+		else if (EnemyType == (int) Constants.EnemiesNames.CazadorRifle)
+		{
+			Speed = Constants.SPEED_CAZADOR_RIFLE;
+			Damage = Constants.DAMAGE_CAZADOR_RIFLE;
+		}
+		else if (EnemyType == (int) Constants.EnemiesNames.Perro)
+		{
+			Speed = Constants.SPEED_PERRO;
+			Damage = Constants.DAMAGE_PERRO;				
+		}
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
 		if (!Statics.Paused)
 		{	
-			if(EnemiType == (int) Constants.EnemiesNames.NinoPalo)
-			{
-				gameObject.transform.position = gameObject.transform.position - new Vector3(0 + ImpulseH,0,Constants.SPEED_NINO_PALO);			
-			}
-			else if (EnemiType == (int) Constants.EnemiesNames.NinoGomera)
-			{
-				gameObject.transform.position = gameObject.transform.position - new Vector3(0+ ImpulseH,0,Constants.SPEED_NINO_GOMERA);			
-			}
-			else if (EnemiType == (int) Constants.EnemiesNames.Cazador)
-			{
-				gameObject.transform.position = gameObject.transform.position - new Vector3(0+ ImpulseH,0,Constants.SPEED_CAZADOR);			
-			}
-			else if (EnemiType == (int) Constants.EnemiesNames.CazadorRifle)
-			{
-				gameObject.transform.position = gameObject.transform.position - new Vector3(0 + ImpulseH,0,Constants.SPEED_CAZADOR_RIFLE);			
-			}
-			else if (EnemiType == (int) Constants.EnemiesNames.Perro)
-			{
-				ChasePlayer();
-			}
+			ChasePlayer();
+			gameObject.transform.position = gameObject.transform.position - new Vector3(0 + ImpulseH,0,Speed);
 			if(ImpulseH !=0)
 			{
 				if(ImpulseH < 0)
 				{
-					ImpulseH += 0.2f;
+					//prueba para ver si lo hace smooth
+					//ImpulseH = Mathf.SmoothStep(ImpulseH,0,Time.smoothDeltaTime);
+					ImpulseH = Mathf.Lerp(ImpulseH,0,Time.smoothDeltaTime*10);					
+					//ImpulseH += 0.2f;
 					if (ImpulseH > 0) ImpulseH = 0;
 				}
 				else if(ImpulseH >0)
 				{
-					ImpulseH -= 0.2f;
+					ImpulseH = Mathf.Lerp(ImpulseH,0,Time.smoothDeltaTime*10);
+					//ImpulseH = Mathf.SmoothStep(ImpulseH,0,Time.smoothDeltaTime);
+					//ImpulseH -= 0.2f;
 					if (ImpulseH < 0) ImpulseH = 0;
 				}
 			}
@@ -58,14 +70,17 @@ public class EnemyBehaviour : MonoBehaviour {
 	
 	void ChasePlayer()
 	{
-		if(gameObject.transform.position.x < Statics.Player.transform.position.x)
-				{
-					gameObject.transform.position = gameObject.transform.position - new Vector3(-0.05f + ImpulseH,0,Constants.SPEED_PERRO);		
-				}
-				else if(gameObject.transform.position.x > Statics.Player.transform.position.x)
-				{
-					gameObject.transform.position = gameObject.transform.position - new Vector3(0.05f + ImpulseH,0,Constants.SPEED_PERRO);		
-				}
+		if (EnemyType == (int) Constants.EnemiesNames.Perro)
+		{
+			if(gameObject.transform.position.x < Statics.Player.transform.position.x)
+			{
+				gameObject.transform.position = gameObject.transform.position - new Vector3(-0.05f + ImpulseH,0,Speed);		
+			}
+			else if(gameObject.transform.position.x > Statics.Player.transform.position.x)
+			{
+				gameObject.transform.position = gameObject.transform.position - new Vector3(0.05f + ImpulseH,0,Speed);		
+			}
+		}
 	}
 	void OnTriggerEnter(Collider collider)
     {
@@ -82,35 +97,17 @@ public class EnemyBehaviour : MonoBehaviour {
 			}
 			else
 			{
-				if(EnemiType == (int) Constants.EnemiesNames.NinoPalo)
-				{					
-					collider.gameObject.GetComponent<PlayerBehaviour>().HitPoints -= Constants.DAMAGE_NINO_PALO;
-				}
-				else if (EnemiType == (int) Constants.EnemiesNames.NinoGomera)
-				{
-					collider.gameObject.GetComponent<PlayerBehaviour>().HitPoints -= Constants.DAMAGE_NINO_GOMERA;
-				}
-				else if (EnemiType == (int) Constants.EnemiesNames.Cazador)
-				{
-					collider.gameObject.GetComponent<PlayerBehaviour>().HitPoints -= Constants.DAMAGE_CAZADOR;
-				}
-				else if (EnemiType == (int) Constants.EnemiesNames.CazadorRifle)
-				{
-					collider.gameObject.GetComponent<PlayerBehaviour>().HitPoints -= Constants.DAMAGE_CAZADOR_RIFLE;
-				}
-				else if (EnemiType == (int) Constants.EnemiesNames.Perro)
-				{
-            		collider.gameObject.GetComponent<PlayerBehaviour>().HitPoints -= Constants.DAMAGE_PERRO;
-				}
+            	collider.gameObject.GetComponent<PlayerBehaviour>().HitPoints -= Damage;
 				collider.gameObject.GetComponent<PlayerBehaviour>().Hitted=true;
+				Statics.Hit.SetActive(true);
 			}
         }
 		else if(collider.gameObject.tag == Constants.TAG_TREE)
 		{
 			if(gameObject.transform.position.x < collider.gameObject.transform.position.x)
-				ImpulseH = 1;
+				ImpulseH = 0.5f;
 			else if (gameObject.transform.position.x > collider.gameObject.transform.position.x)
-				ImpulseH = -1;
+				ImpulseH = -0.5f;
 		}	
     }
 	

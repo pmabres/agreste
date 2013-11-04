@@ -46,7 +46,7 @@ public class SpawnerBehaviour : MonoBehaviour {
 		Enemy[2,6] = 0.5f;
 		
 		//Enemy D
-		Enemy[3,0] = 0;
+		Enemy[3,0] = 1;
 		Enemy[3,1] = 0;
 		Enemy[3,2] = 0;
 		Enemy[3,3] = 0.5f;
@@ -136,7 +136,7 @@ public class SpawnerBehaviour : MonoBehaviour {
 							ListEnem.Add(i);
 						}						
 					}
-					
+					GameObject child = null;
 					//Se hace un random entre los enemigos en la lista
 					Selected = Mathf.FloorToInt(Random.Range(0,(int) ListEnem.Count));
 					if(ListEnem.Count>0)
@@ -150,6 +150,7 @@ public class SpawnerBehaviour : MonoBehaviour {
 					else if (Selected == (int) Constants.EnemiesNames.NinoGomera)
 					{
 						EnemyName = "NinoGomera";
+						child = Statics.Instantiate("Aura");
 						//Debug.Log("NiñoGomera");
 					}
 					else if (Selected == (int) Constants.EnemiesNames.Cazador)
@@ -160,6 +161,8 @@ public class SpawnerBehaviour : MonoBehaviour {
 					else if (Selected == (int) Constants.EnemiesNames.CazadorRifle)
 					{
 						EnemyName = "CazadorRifle";
+						child = Statics.Instantiate("Aura");
+						child.transform.localScale = new Vector3(30,1,30); // aumento la escala del aura del adulto
 						//Debug.Log("CazadorRif");
 					}
 					else if (Selected == (int) Constants.EnemiesNames.Perro)
@@ -175,7 +178,12 @@ public class SpawnerBehaviour : MonoBehaviour {
 																	gameObject.transform.position.y,
 																	Random.Range(Statics.Player.transform.position.z + 50,Statics.Player.transform.position.z + 150));
 						GameObject enem = Statics.Instantiate(EnemyName,gameObject.transform.position,GameObject.FindGameObjectWithTag(Constants.TAG_ENEMIES).transform);
-						enem.GetComponent<EnemyBehaviour>().EnemiType = Selected;
+						enem.GetComponent<EnemyBehaviour>().EnemyType = Selected;
+						if (child != null) 
+						{
+							child.transform.position = new Vector3(gameObject.transform.position.x,0.2f,gameObject.transform.position.z);
+							child.transform.parent = enem.transform;							
+						}
 					}
 				}
 			}
