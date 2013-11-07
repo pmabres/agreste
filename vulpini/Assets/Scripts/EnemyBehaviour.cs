@@ -60,13 +60,13 @@ public class EnemyBehaviour : MonoBehaviour {
 					//ImpulseH -= 0.2f;
 					if (ImpulseH < 0) ImpulseH = 0;
 				}
-				if(EnemyType == (int) Constants.EnemiesNames.NinoPalo)
-				{
-					if(Vector3.Distance(Statics.Player.transform.position,gameObject.transform.position)< 5)
-				    {
-						Debug.Log("entra");
-					}
-				}
+			}
+			if(EnemyType == (int) Constants.EnemiesNames.NinoPalo)
+			{
+				if(Vector3.Distance(Statics.Player.transform.position,gameObject.transform.position)< 20)
+			    {
+					gameObject.GetComponent<Animator>().SetFloat("transition", Mathf.Lerp(gameObject.GetComponent<Animator>().GetFloat("transition"),1,Time.deltaTime*2));
+						}
 			}
 		}
 	}
