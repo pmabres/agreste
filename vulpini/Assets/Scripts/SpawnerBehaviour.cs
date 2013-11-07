@@ -235,9 +235,9 @@ public class SpawnerBehaviour : MonoBehaviour {
 						if (PowerName != null)
 						{
 							gameObject.transform.position= new Vector3(Random.Range(Statics.Player.transform.position.x - 50,Statics.Player.transform.position.x + 50),
-																			gameObject.transform.position.y + 1.1f,
+																			gameObject.transform.position.y,
 																			Random.Range(Statics.Player.transform.position.z + 50,Statics.Player.transform.position.z + 150));
-							Statics.Instantiate("Power",gameObject.transform.position,GameObject.FindGameObjectWithTag(Constants.TAG_POWER).transform, PowerName );
+							Statics.Instantiate("Power",new Vector3(gameObject.transform.position.x,gameObject.transform.position.y + 1,gameObject.transform.position.z),GameObject.FindGameObjectWithTag(Constants.TAG_POWER).transform, PowerName );
 							Statics.CountPowers ++;
 						}
 					}

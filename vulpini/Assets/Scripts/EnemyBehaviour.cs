@@ -60,6 +60,13 @@ public class EnemyBehaviour : MonoBehaviour {
 					//ImpulseH -= 0.2f;
 					if (ImpulseH < 0) ImpulseH = 0;
 				}
+				if(EnemyType == (int) Constants.EnemiesNames.NinoPalo)
+				{
+					if(Vector3.Distance(Statics.Player.transform.position,gameObject.transform.position)< 5)
+				    {
+						Debug.Log("entra");
+					}
+				}
 			}
 		}
 	}
