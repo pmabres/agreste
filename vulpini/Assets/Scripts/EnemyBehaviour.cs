@@ -68,6 +68,20 @@ public class EnemyBehaviour : MonoBehaviour {
 					gameObject.GetComponent<Animator>().SetFloat("transition", Mathf.Lerp(gameObject.GetComponent<Animator>().GetFloat("transition"),1,Time.deltaTime*2));
 				}
 			}
+			else if(EnemyType == (int) Constants.EnemiesNames.NinoRanged)
+			{
+				if(Vector3.Distance(Statics.Player.transform.position,gameObject.transform.position)< 15)
+			    {
+					gameObject.GetComponent<Animator>().SetFloat("transition", Mathf.Lerp(gameObject.GetComponent<Animator>().GetFloat("transition"),1,Time.deltaTime*2));
+				}
+			}
+			else if(EnemyType == (int) Constants.EnemiesNames.CazadorRanged)
+			{
+				if(Vector3.Distance(Statics.Player.transform.position,gameObject.transform.position)< 25)
+			    {
+					gameObject.GetComponent<Animator>().SetFloat("transition", Mathf.Lerp(gameObject.GetComponent<Animator>().GetFloat("transition"),1,Time.deltaTime*2));
+				}
+			}
 		}
 	}
 	public void Hit()

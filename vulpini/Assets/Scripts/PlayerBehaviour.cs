@@ -31,7 +31,10 @@ public class PlayerBehaviour : MonoBehaviour {
 			{
 				TimeAttack += Time.deltaTime;
 				if(TimeAttack>=Statics.TimeAttack)
-				{Attack = false; TimeAttack=0;}
+				{	
+					Attack = false;
+					TimeAttack=0;
+				}
 			}
 			
 			if(Statics.FreeRoad)
