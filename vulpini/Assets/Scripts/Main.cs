@@ -15,6 +15,12 @@ public class Main : MonoBehaviour
 		Statics.Hit = GameObject.FindGameObjectWithTag("RedScreen");
 		Statics.GameOver.SetActive(false);
 		Statics.Hit.SetActive(false);
+		Statics.pre = GameObject.FindGameObjectWithTag(Constants.TAG_PRE_ADQ);
+		Statics.pre1 = GameObject.FindGameObjectWithTag(Constants.TAG_PRE1);
+		Statics.pre2 = GameObject.FindGameObjectWithTag(Constants.TAG_PRE2);
+	 	Statics.pre3 = GameObject.FindGameObjectWithTag(Constants.TAG_PRE3);
+	 	Statics.pre4 = GameObject.FindGameObjectWithTag(Constants.TAG_PRE4);
+	 	Statics.DescP = GameObject.FindGameObjectWithTag(Constants.TAG_DESCP);
 	}
 	void Start () 
 	{		
