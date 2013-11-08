@@ -63,10 +63,10 @@ public class EnemyBehaviour : MonoBehaviour {
 			}
 			if(EnemyType == (int) Constants.EnemiesNames.NinoPalo)
 			{
-				if(Vector3.Distance(Statics.Player.transform.position,gameObject.transform.position)< 20)
+				if(Vector3.Distance(Statics.Player.transform.position,gameObject.transform.position)< 15)
 			    {
 					gameObject.GetComponent<Animator>().SetFloat("transition", Mathf.Lerp(gameObject.GetComponent<Animator>().GetFloat("transition"),1,Time.deltaTime*2));
-						}
+				}
 			}
 		}
 	}
