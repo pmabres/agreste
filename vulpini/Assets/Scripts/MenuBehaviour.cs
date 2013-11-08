@@ -37,10 +37,10 @@ public class MenuBehaviour : MonoBehaviour {
 		//MOUSE
 		else if (Input.GetMouseButtonDown(0) && Statics.Paused)
 		{	
-			Debug.Log(Input.mousePosition);
+			
 
 			if (Input.mousePosition.x >= 800 && Input.mousePosition.x <= 880
-				&& Input.mousePosition.y >= 45 && Input.mousePosition.y <= 115 && State==0){
+				&& Input.mousePosition.y >= 39 && Input.mousePosition.y <= 117 && State==0){
 				Statics.pre1.SetActive(true);
 				Statics.pre2.SetActive(true);
 				Statics.pre3.SetActive(true);
@@ -74,13 +74,20 @@ public class MenuBehaviour : MonoBehaviour {
 		}
 		if (Input.GetMouseButtonUp(0) && State==1)
 		{
+			if (Input.mousePosition.x >= 743 && Input.mousePosition.x <= 763
+				&& Input.mousePosition.y >= 54 && Input.mousePosition.y <= 74)
+			{
+				Statics.Player.GetComponent<Avanzar>().Speed = true;
+			}
 			Statics.pre1.SetActive(false);
 			Statics.pre2.SetActive(false);
 			Statics.pre3.SetActive(false);
 			Statics.pre4.SetActive(false);
 			Statics.DescP.SetActive(false);
 			
-			
+			Debug.Log(Input.mousePosition);
+			Debug.Log(Input.mousePosition+new Vector3(10,10,0));
+			Debug.Log(Input.mousePosition-new Vector3(10,10,0));
 			State=0;
 		}
 	}	
