@@ -18,17 +18,17 @@ public static class Constants {
 	public const int MAX_POWER_VIEW = 3;
 	
 	//Speed enemigos
-	public const float SPEED_NINO_PALO = 0.02f;
-	public const float SPEED_NINO_GOMERA = 0;
-	public const float SPEED_CAZADOR = 0.05f;
-	public const float SPEED_CAZADOR_RIFLE = 0.02f;
+	public const float SPEED_NINO_RANGED = 0.02f;
+	public const float SPEED_NINO_MELEE = 0;
+	public const float SPEED_CAZADOR_MELEE = 0.05f;
+	public const float SPEED_CAZADOR_RANGED = 0.02f;
 	public const float SPEED_PERRO = 0.25f;
 	
 	//Daño Enemigos
-	public const int DAMAGE_NINO_PALO = 1;
-	public const int DAMAGE_NINO_GOMERA = 1;
-	public const int DAMAGE_CAZADOR = 2;
-	public const int DAMAGE_CAZADOR_RIFLE = 3;
+	public const int DAMAGE_NINO_MELEE = 1;
+	public const int DAMAGE_NINO_RANGED = 1;
+	public const int DAMAGE_CAZADOR_MELEE = 2;
+	public const int DAMAGE_CAZADOR_RANGED = 3;
 	public const int DAMAGE_PERRO = 4;
 		
 	
@@ -49,10 +49,10 @@ public static class Constants {
 	public enum EnemiesNames
 	{
 		Min = 0,
-		NinoPalo = 0,
-		NinoGomera= 1,
-		Cazador= 2,
-		CazadorRifle= 3,
+		NinoMelee = 0,
+		NinoRanged= 1,
+		CazadorMelee= 2,
+		CazadorRanged= 3,
 		Perro=4,
 		Max = 5
 	}

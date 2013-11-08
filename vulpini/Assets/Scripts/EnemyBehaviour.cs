@@ -10,25 +10,25 @@ public class EnemyBehaviour : MonoBehaviour {
 	// Use this for initialization
 	void Start() 
 	{
-		if(EnemyType == (int) Constants.EnemiesNames.NinoPalo)
+		if(EnemyType == (int) Constants.EnemiesNames.NinoMelee)
 		{
-			Speed = Constants.SPEED_NINO_PALO;
-			Damage = Constants.DAMAGE_NINO_PALO;
+			Speed = Constants.SPEED_NINO_RANGED;
+			Damage = Constants.DAMAGE_NINO_MELEE;
 		}
-		else if (EnemyType == (int) Constants.EnemiesNames.NinoGomera)
+		else if (EnemyType == (int) Constants.EnemiesNames.NinoRanged)
 		{
-			Speed = Constants.SPEED_NINO_GOMERA;				
-			Damage = Constants.DAMAGE_NINO_GOMERA;
+			Speed = Constants.SPEED_NINO_MELEE;				
+			Damage = Constants.DAMAGE_NINO_RANGED;
 		}
-		else if (EnemyType == (int) Constants.EnemiesNames.Cazador)
+		else if (EnemyType == (int) Constants.EnemiesNames.CazadorMelee)
 		{
-			Speed = Constants.SPEED_CAZADOR;				
-			Damage = Constants.DAMAGE_CAZADOR;
+			Speed = Constants.SPEED_CAZADOR_MELEE;				
+			Damage = Constants.DAMAGE_CAZADOR_MELEE;
 		}
-		else if (EnemyType == (int) Constants.EnemiesNames.CazadorRifle)
+		else if (EnemyType == (int) Constants.EnemiesNames.CazadorRanged)
 		{
-			Speed = Constants.SPEED_CAZADOR_RIFLE;
-			Damage = Constants.DAMAGE_CAZADOR_RIFLE;
+			Speed = Constants.SPEED_CAZADOR_RANGED;
+			Damage = Constants.DAMAGE_CAZADOR_RANGED;
 		}
 		else if (EnemyType == (int) Constants.EnemiesNames.Perro)
 		{
@@ -61,7 +61,7 @@ public class EnemyBehaviour : MonoBehaviour {
 					if (ImpulseH < 0) ImpulseH = 0;
 				}
 			}
-			if(EnemyType == (int) Constants.EnemiesNames.NinoPalo)
+			if(EnemyType == (int) Constants.EnemiesNames.NinoMelee)
 			{
 				if(Vector3.Distance(Statics.Player.transform.position,gameObject.transform.position)< 15)
 			    {
