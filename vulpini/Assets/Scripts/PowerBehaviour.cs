@@ -28,6 +28,7 @@ public class PowerBehaviour : MonoBehaviour {
     {
         if (collider.gameObject.tag == Constants.TAG_PLAYER && !hitted)
         {			
+			Statics.PowerUpsHitted ++;
 			if (this.name == "Heal") {
 				if(collider.gameObject.GetComponent<PlayerBehaviour>().HitPoints < Statics.MaxHealth)
 					collider.gameObject.GetComponent<PlayerBehaviour>().HitPoints += 1;

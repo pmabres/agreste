@@ -21,6 +21,10 @@ public class Main : MonoBehaviour
 	 	Statics.pre3 = GameObject.FindGameObjectWithTag(Constants.TAG_PRE3);
 	 	Statics.pre4 = GameObject.FindGameObjectWithTag(Constants.TAG_PRE4);
 	 	Statics.DescP = GameObject.FindGameObjectWithTag(Constants.TAG_DESCP);
+		Statics.MetersOneHit=0;
+		Statics.MetersSide=0;
+	 	Statics.SmashedEnemies=0;
+	 	Statics.PowerUpsHitted=0;
 	}
 	void Start () 
 	{		

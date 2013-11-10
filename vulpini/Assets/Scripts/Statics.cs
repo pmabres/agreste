@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public static class Statics 
 {
@@ -38,6 +39,13 @@ public static class Statics
 	public static int TimeAttack=5;
 	public static int TimeFree=10;
 	public static bool FreeRoad=false;
+	
+	public static string CompletedMissions;
+	public static List<Misiones> lstMissions = new List<Misiones>();	
+	public static int MetersOneHit=0;
+	public static int MetersSide=0;
+	public static int SmashedEnemies=0;
+	public static int PowerUpsHitted=0;
 	
 	public static GameObject Instantiate(string tag)
 	{		

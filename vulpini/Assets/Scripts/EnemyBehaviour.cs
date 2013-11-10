@@ -116,6 +116,7 @@ public class EnemyBehaviour : MonoBehaviour {
 			if(collider.gameObject.GetComponent<PlayerBehaviour>().Attack)
 			{
 				Debug.Log("salvado");
+				Statics.SmashedEnemies ++;
 			}
 			else
 			{

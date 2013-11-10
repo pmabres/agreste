@@ -7,9 +7,11 @@ public class MovementBehaviour : MonoBehaviour {
 	CharacterMotor motor;
 	float AccelLimit = 0.3f;
 	int maxSideSpeed = 24; // the actual speed its obtained multiplying for AccelLimit. EX: 0.3f * 24 = 8
+	int initialPositionX = 0;
 	void Start () 
 	{		
-		motor = Statics.Player.GetComponent<CharacterMotor>();											
+		motor = Statics.Player.GetComponent<CharacterMotor>();
+		initialPositionX  = (int)gameObject.transform.position.x;
 	}
 	
 	// Update is called once per frame
@@ -24,6 +26,7 @@ public class MovementBehaviour : MonoBehaviour {
 			{
 				TouchDetect();
 			}
+			Statics.MetersSide = Mathf.Abs(initialPositionX - (int)gameObject.transform.position.x);
 		}
 	}
 	void AccelerationDetect()

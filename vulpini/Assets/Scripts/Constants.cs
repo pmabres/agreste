@@ -44,15 +44,6 @@ public static class Constants {
 	public const float TOUCH_SCREEN_WIDTH_PROPORTION = 0.21f; 
 	public const float TOUCH_SCREEN_HEIGHT_PROPORTION = 0.185f;
 	
-	public enum SecMission
-	{
-		Min=0,
-		CantMts = 0,
-		CantEnem = 1,
-		CantMtsSPW = 2,
-		CantMtsSDN = 3,
-		Max = 4
-	}
 	
 	public enum EnemiesNames
 	{
@@ -62,7 +53,7 @@ public static class Constants {
 		CazadorMelee= 2,
 		CazadorRanged= 3,
 		Perro=4,
-		Max = 5
+		Max = 5	
 	}
 	
 	public enum PowerNames
@@ -73,5 +64,16 @@ public static class Constants {
 		Attack= 2,
 		Free= 3,
 		Max= 4
+	}
+	public enum Tipos 
+	{
+		Morir = 1,
+		Estampar = 2,
+		SobrevivirRango = 3,
+		PowerUps = 4,
+		Alcanzar = 5,
+		AlcanzarY = 6,
+		AlcanzarNoPowerUps = 7,
+		AlcanzarVida = 8
 	}
 }

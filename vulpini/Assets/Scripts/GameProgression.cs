@@ -18,6 +18,7 @@ public class GameProgression : MonoBehaviour {
 			Statics.Agility = PlayerPrefs.GetFloat("Agility");
 			Statics.Velocity = PlayerPrefs.GetFloat("Velocity");	
 			Statics.Paws = PlayerPrefs.GetInt("Paws");
+			Statics.CompletedMissions = PlayerPrefs.GetString("CompletedMissions");
 		}
 		else
 		{
@@ -31,6 +32,8 @@ public class GameProgression : MonoBehaviour {
 		PlayerPrefs.SetFloat("Agility",Statics.Agility);
 		PlayerPrefs.SetFloat("Velocity",Statics.Velocity);
 		PlayerPrefs.SetInt ("Paws",Statics.Paws);
+		PlayerPrefs.SetString("CompletedMissions",Statics.CompletedMissions);
+		PlayerPrefs.Save();
 	}
 	// Update is called once per frame
 	void FixedUpdate () 

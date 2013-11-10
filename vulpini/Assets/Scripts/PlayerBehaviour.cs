@@ -10,7 +10,26 @@ public class PlayerBehaviour : MonoBehaviour {
 	public float TimeHitTree =0;
 	public bool Hitted = false;
 	public bool HittedTree = false;
-	public int HitPoints;
+	private int hitPoints;
+	public int HitPoints
+    {
+        get 
+		{ 
+			return hitPoints; 
+		}
+        set 
+		{ 
+			hitPoints = value;
+			if (hitPoints==1)
+			{
+				Statics.MetersOneHit=1;
+			}
+			else
+			{
+				Statics.MetersOneHit=0;
+			}
+		}
+    }
 	public float ImpulseH;
 	public float rotate = 0;
 	void Awake () 
