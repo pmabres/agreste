@@ -22,29 +22,33 @@ public class AuraBehaviour : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () 	
+	void FixedUpdate () 	
 	{
-		if (activated) 
+		if (!Statics.Paused)
 		{
-			end = 1.2f;
-			time = speed;
-			if (c.a >= 1)
+			gameObject.transform.rotation = Quaternion.identity;
+			if (activated) 
 			{
-				fire=true;
+				end = 1.2f;
+				time = speed;
+				if (c.a >= 1)
+				{
+					fire=true;
+				}
 			}
+			else
+			{
+				time = 2;
+				end = 0;
+			}
+			
+			//if (c.a >= 0.1f && c.a <= 1)
+			//{
+				// la funcion lerp sirve para hacer transiciones de numeros de forma gradual
+			c.a = Mathf.Lerp(gameObject.renderer.material.color.a,end,Time.deltaTime*time);
+			gameObject.renderer.material.color = c;
+			//}			
 		}
-		else
-		{
-			time = 2;
-			end = 0;
-		}
-		
-		//if (c.a >= 0.1f && c.a <= 1)
-		//{
-			// la funcion lerp sirve para hacer transiciones de numeros de forma gradual
-		c.a = Mathf.Lerp(gameObject.renderer.material.color.a,end,Time.deltaTime*time);
-		gameObject.renderer.material.color = c;
-		//}			
 	}
 	void OnTriggerEnter(Collider collider)
 	{

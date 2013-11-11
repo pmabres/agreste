@@ -48,8 +48,8 @@ public class EnemyBehaviour : MonoBehaviour {
 		{	
 			ChasePlayer();
 			//gameObject.transform.position = gameObject.transform.position - new Vector3(0 + ImpulseH,0,Speed);
-			gameObject.transform.LookAt(Statics.Player.transform.position + new Vector3(0,0, 5));
-			gameObject.transform.Translate(Vector3.forward * Time.deltaTime);
+			gameObject.transform.LookAt(Statics.Player.transform.position + new Vector3(0,0, 2));
+			gameObject.transform.Translate(new Vector3(Vector3.forward.x  + ImpulseH,Vector3.forward.y ,Vector3.forward.z * Speed ));
 			ImpulseH = Mathf.Lerp(ImpulseH,0,Time.smoothDeltaTime*10);
 
 			if(Vector3.Distance(Statics.Player.transform.position,gameObject.transform.position)< Distance)
