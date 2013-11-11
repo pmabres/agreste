@@ -48,12 +48,19 @@ public class PlayerBehaviour : MonoBehaviour {
 			Statics.Meters = (int) gameObject.transform.position.z;
 			if(Attack)
 			{
+				Debug.Log("start attack");
+				Statics.VelocityAttack = 5;
 				TimeAttack += Time.deltaTime;
 				if(TimeAttack>=Statics.TimeAttack)
 				{	
 					Attack = false;
 					TimeAttack=0;
+					Debug.Log("fin attack");
 				}
+			}
+			else
+			{
+				Statics.VelocityAttack = 0;
 			}
 			
 			if(Statics.FreeRoad)

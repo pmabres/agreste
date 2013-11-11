@@ -18,7 +18,7 @@ public static class Statics
 	public static GameObject DescP;
 	
 	
-	
+	public static float VelocityAttack = 0.4f;
 	public static bool RestartGame=false;
 	public static int TreesPerTerrain=20;
 	public static int GrassPerTerrain=100;

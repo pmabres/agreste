@@ -48,7 +48,7 @@ public class Avanzar : MonoBehaviour
 					if(motor.movement.maxSidewaysSpeed > 10)
 						motor.movement.maxSidewaysSpeed = 10;
 				}
-				motor.SetVelocity(new Vector3(motor.movement.velocity.x + gameObject.GetComponent<PlayerBehaviour>().ImpulseH,motor.movement.velocity.y,motor.movement.maxForwardSpeed));
+				motor.SetVelocity(new Vector3(motor.movement.velocity.x + gameObject.GetComponent<PlayerBehaviour>().ImpulseH,motor.movement.velocity.y,motor.movement.maxForwardSpeed + Statics.VelocityAttack));
 			}
 		}
 	}
