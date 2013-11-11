@@ -7,11 +7,6 @@ public class MenuBehaviour : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{		
-		Statics.pre1.SetActive(false);
-		Statics.pre2.SetActive(false);
-		Statics.pre3.SetActive(false);
-		Statics.pre4.SetActive(false);
-		Statics.DescP.SetActive(false);
 	}	
 	// Update is called once per frame
 	void FixedUpdate () 
@@ -39,17 +34,7 @@ public class MenuBehaviour : MonoBehaviour {
 		{	
 			
 
-			if (Input.mousePosition.x >= 800 && Input.mousePosition.x <= 880
-				&& Input.mousePosition.y >= 39 && Input.mousePosition.y <= 117 && State==0){
-				Statics.pre1.SetActive(true);
-				Statics.pre2.SetActive(true);
-				Statics.pre3.SetActive(true);
-				Statics.pre4.SetActive(true);
-				Statics.DescP.SetActive(true);
-				Statics.DescP.GetComponent<TextMesh>().text = "Nivel Actual= \n" + "Velocidad Aumentada \n Coste: ";
-				State=1;
-			}			
-			else if (Statics.GameOver.activeSelf)
+			if (Statics.GameOver.activeSelf)
 			{
 				Statics.RestartGame=true;
 			}
@@ -79,15 +64,6 @@ public class MenuBehaviour : MonoBehaviour {
 			{
 				Statics.Player.GetComponent<Avanzar>().Speed = true;
 			}
-			Statics.pre1.SetActive(false);
-			Statics.pre2.SetActive(false);
-			Statics.pre3.SetActive(false);
-			Statics.pre4.SetActive(false);
-			Statics.DescP.SetActive(false);
-			
-			Debug.Log(Input.mousePosition);
-			Debug.Log(Input.mousePosition+new Vector3(10,10,0));
-			Debug.Log(Input.mousePosition-new Vector3(10,10,0));
 			State=0;
 		}
 	}	

@@ -18,15 +18,8 @@ public static class Constants {
 	public const string TAG_MENU = "Menu";
 	public const string TAG_HUD = "HUD";
 	public const string TAG_POWER = "Powers";
+	public const string TAG_PAWS = "Paws";
 	public const int MAX_POWER_VIEW = 3;
-	
-	//Prefabs
-	public const string TAG_PRE_ADQ = "Pre";
-	public const string TAG_PRE1 = "Pre1";
-	public const string TAG_PRE2 = "Pre2";
-	public const string TAG_PRE3 = "Pre3";
-	public const string TAG_PRE4 = "Pre4";
-	public const string TAG_DESCP = "DescPreA";
 	
 	//Speed enemigos
 	public const float SPEED_NINO_RANGED = 0.02f;

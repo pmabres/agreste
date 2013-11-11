@@ -15,12 +15,7 @@ public class Main : MonoBehaviour
 		Statics.Hit = GameObject.FindGameObjectWithTag("RedScreen");
 		Statics.GameOver.SetActive(false);
 		Statics.Hit.SetActive(false);
-		Statics.pre = GameObject.FindGameObjectWithTag(Constants.TAG_PRE_ADQ);
-		Statics.pre1 = GameObject.FindGameObjectWithTag(Constants.TAG_PRE1);
-		Statics.pre2 = GameObject.FindGameObjectWithTag(Constants.TAG_PRE2);
-	 	Statics.pre3 = GameObject.FindGameObjectWithTag(Constants.TAG_PRE3);
-	 	Statics.pre4 = GameObject.FindGameObjectWithTag(Constants.TAG_PRE4);
-	 	Statics.DescP = GameObject.FindGameObjectWithTag(Constants.TAG_DESCP);
+		Statics.Paw = GameObject.FindGameObjectWithTag(Constants.TAG_PAWS);
 		Statics.MetersOneHit=0;
 		Statics.MetersSide=0;
 	 	Statics.SmashedEnemies=0;
@@ -34,6 +29,7 @@ public class Main : MonoBehaviour
 		Statics.AccelerometerActive = false;
 		Statics.Paused = true;
 		Statics.Terrains.gTerrains.transform.parent = gameObject.transform;
+		Statics.Paw.GetComponent<TextMesh>().text = Statics.Paws.ToString();
 	}
 	
 	// Update is called once per frame

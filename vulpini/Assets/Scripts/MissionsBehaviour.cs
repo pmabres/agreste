@@ -201,7 +201,8 @@ public class MissionsBehaviour : MonoBehaviour {
 		{
 			if (!Statics.lstMissions[id].Completada)
 			{
-				Statics.lstMissions[id].Completada = true;				
+				Statics.lstMissions[id].Completada = true;
+				Statics.Paws += Statics.lstMissions[id].Recompensa;
 				Statics.CompletedMissions += id + ",";
 				gameObject.GetComponent<TextMesh>().text = "";
 				SetText();

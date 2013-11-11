@@ -7,6 +7,7 @@ public class EnemyBehaviour : MonoBehaviour {
 	public float Speed;	
 	public float ImpulseH = 0;
 	public int EnemyType {get;set;}
+	public int Distance =0;
 	// Use this for initialization
 	void Start() 
 	{
@@ -14,26 +15,30 @@ public class EnemyBehaviour : MonoBehaviour {
 		{
 			Speed = Constants.SPEED_NINO_RANGED;
 			Damage = Constants.DAMAGE_NINO_MELEE;
+			Distance = 15;
 		}
 		else if (EnemyType == (int) Constants.EnemiesNames.NinoRanged)
 		{
 			Speed = Constants.SPEED_NINO_MELEE;				
 			Damage = Constants.DAMAGE_NINO_RANGED;
+			Distance = 20;
 		}
 		else if (EnemyType == (int) Constants.EnemiesNames.CazadorMelee)
 		{
 			Speed = Constants.SPEED_CAZADOR_MELEE;				
 			Damage = Constants.DAMAGE_CAZADOR_MELEE;
+			Distance = 15;
 		}
 		else if (EnemyType == (int) Constants.EnemiesNames.CazadorRanged)
 		{
 			Speed = Constants.SPEED_CAZADOR_RANGED;
 			Damage = Constants.DAMAGE_CAZADOR_RANGED;
+			Distance = 25;
 		}
 		else if (EnemyType == (int) Constants.EnemiesNames.Perro)
 		{
 			Speed = Constants.SPEED_PERRO;
-			Damage = Constants.DAMAGE_PERRO;				
+			Damage = Constants.DAMAGE_PERRO;
 		}
 	}
 	
@@ -45,44 +50,11 @@ public class EnemyBehaviour : MonoBehaviour {
 			//gameObject.transform.position = gameObject.transform.position - new Vector3(0 + ImpulseH,0,Speed);
 			gameObject.transform.LookAt(Statics.Player.transform.position + new Vector3(0,0, 5));
 			gameObject.transform.Translate(Vector3.forward * Time.deltaTime);
-			if(ImpulseH !=0)
+			ImpulseH = Mathf.Lerp(ImpulseH,0,Time.smoothDeltaTime*10);
+
+			if(Vector3.Distance(Statics.Player.transform.position,gameObject.transform.position)< Distance)
 			{
-				if(ImpulseH < 0)
-				{
-					//prueba para ver si lo hace smooth
-					//ImpulseH = Mathf.SmoothStep(ImpulseH,0,Time.smoothDeltaTime);
-					ImpulseH = Mathf.Lerp(ImpulseH,0,Time.smoothDeltaTime*10);					
-					//ImpulseH += 0.2f;
-					if (ImpulseH > 0) ImpulseH = 0;
-				}
-				else if(ImpulseH >0)
-				{
-					ImpulseH = Mathf.Lerp(ImpulseH,0,Time.smoothDeltaTime*10);
-					//ImpulseH = Mathf.SmoothStep(ImpulseH,0,Time.smoothDeltaTime);
-					//ImpulseH -= 0.2f;
-					if (ImpulseH < 0) ImpulseH = 0;
-				}
-			}
-			if(EnemyType == (int) Constants.EnemiesNames.NinoMelee)
-			{
-				if(Vector3.Distance(Statics.Player.transform.position,gameObject.transform.position)< 15)
-			    {
-					gameObject.GetComponent<Animator>().SetFloat("transition", Mathf.Lerp(gameObject.GetComponent<Animator>().GetFloat("transition"),1,Time.deltaTime*2));
-				}
-			}
-			else if(EnemyType == (int) Constants.EnemiesNames.NinoRanged)
-			{
-				if(Vector3.Distance(Statics.Player.transform.position,gameObject.transform.position)< 15)
-			    {
-					gameObject.GetComponent<Animator>().SetFloat("transition", Mathf.Lerp(gameObject.GetComponent<Animator>().GetFloat("transition"),1,Time.deltaTime*2));
-				}
-			}
-			else if(EnemyType == (int) Constants.EnemiesNames.CazadorRanged)
-			{
-				if(Vector3.Distance(Statics.Player.transform.position,gameObject.transform.position)< 25)
-			    {
-					gameObject.GetComponent<Animator>().SetFloat("transition", Mathf.Lerp(gameObject.GetComponent<Animator>().GetFloat("transition"),1,Time.deltaTime*2));
-				}
+				gameObject.GetComponent<Animator>().SetFloat("transition", Mathf.Lerp(gameObject.GetComponent<Animator>().GetFloat("transition"),1,Time.deltaTime*2));
 			}
 		}
 	}
