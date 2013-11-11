@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class EnemyBehaviour : MonoBehaviour {
+	
 	public int Damage;
 	public float Speed;	
 	public float ImpulseH = 0;
@@ -42,7 +43,7 @@ public class EnemyBehaviour : MonoBehaviour {
 		{	
 			ChasePlayer();
 			//gameObject.transform.position = gameObject.transform.position - new Vector3(0 + ImpulseH,0,Speed);
-			gameObject.transform.LookAt(Statics.Player.transform.position);
+			gameObject.transform.LookAt(Statics.Player.transform.position + new Vector3(0,0, 5));
 			gameObject.transform.Translate(Vector3.forward * Time.deltaTime);
 			if(ImpulseH !=0)
 			{
