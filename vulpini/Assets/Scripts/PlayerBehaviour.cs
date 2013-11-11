@@ -62,21 +62,24 @@ public class PlayerBehaviour : MonoBehaviour {
 				if(TimeFree >= Statics.TimeFree)
 				{Statics.FreeRoad = false; TimeFree=0;}
 			}
-			
-			if(ImpulseH !=0)
-			{
-				if(ImpulseH < 0)
-				{
-					ImpulseH += 0.75f;
-					if (ImpulseH > 0) ImpulseH = 0;
-				}
-				else if(ImpulseH >0)
-				{
-					ImpulseH -= 0.75f;
-					if (ImpulseH < 0) ImpulseH = 0;
-				}
-			}
-			
+			Debug.Log(ImpulseH);
+//			if(ImpulseH !=0)
+//			{
+//				if(ImpulseH < 0)
+//				{
+//					ImpulseH += 100000;
+//					if (ImpulseH > 0) ImpulseH = 0;
+//				}
+//				else if(ImpulseH >0)
+//				{
+//					ImpulseH -= 100000;
+//					if (ImpulseH < 0) ImpulseH = 0;
+//				}
+//			}
+			//if (ImpulseH != 0)
+			//{							
+				ImpulseH = Mathf.Lerp(ImpulseH,0,27);
+			//}
 			if(Hitted)
 			{
 				TimeHit += Time.deltaTime;
@@ -103,15 +106,15 @@ public class PlayerBehaviour : MonoBehaviour {
     {
 		if (collider.gameObject.tag == Constants.TAG_TREE && !HittedTree)
 		{			
-			gameObject.transform.position -= new Vector3 (0,0,0.75f);
+			//gameObject.transform.position -= new Vector3 (0,0,0.75f);
 			if(gameObject.transform.position.x < collider.gameObject.transform.position.x)
 			{
-				ImpulseH = -2.8f;
+				ImpulseH = -27f;
 				//rotate = 1.75f;
 			}
 			else if (gameObject.transform.position.x > collider.gameObject.transform.position.x)
 			{
-				ImpulseH = 2.8f;
+				ImpulseH = 27f;
 				//rotate = -1.75f;
 			}
 			//gameObject.transform.Rotate(new Vector3(0,0,rotate));

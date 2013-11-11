@@ -11,6 +11,9 @@ public static class Constants {
 	public const string NAME_TREE = "Tree";	
 	public const string NAME_TREE2 = "Tree2";
 	public const string NAME_TREE3 = "Tree3";
+	public const string NAME_GRASS1 = "grass1";
+	public const string NAME_GRASS2 = "grass2";
+	public const string NAME_GRASS3 = "grass3";
 	public const string TAG_GAMEOVER = "GameOver";
 	public const string TAG_MENU = "Menu";
 	public const string TAG_HUD = "HUD";

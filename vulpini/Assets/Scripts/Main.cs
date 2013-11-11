@@ -25,6 +25,7 @@ public class Main : MonoBehaviour
 		Statics.MetersSide=0;
 	 	Statics.SmashedEnemies=0;
 	 	Statics.PowerUpsHitted=0;
+		Statics.lstMissions.Clear();
 	}
 	void Start () 
 	{		

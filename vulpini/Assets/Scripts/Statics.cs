@@ -20,7 +20,8 @@ public static class Statics
 	
 	
 	public static bool RestartGame=false;
-	public static int TreesPerTerrain=35;
+	public static int TreesPerTerrain=20;
+	public static int GrassPerTerrain=100;
 	public static TerrainList Terrains;
 	public static bool AccelerometerActive=false;
 	public static bool Paused=false;	

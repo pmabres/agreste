@@ -46,7 +46,7 @@ public class SpawnerBehaviour : MonoBehaviour {
 		Enemy[2,6] = 0.5f;
 		
 		//Enemy D
-		Enemy[3,0] = 1;
+		Enemy[3,0] = 0;
 		Enemy[3,1] = 0;
 		Enemy[3,2] = 0;
 		Enemy[3,3] = 0.5f;

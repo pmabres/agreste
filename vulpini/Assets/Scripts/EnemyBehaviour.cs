@@ -3,9 +3,8 @@ using System.Collections;
 
 public class EnemyBehaviour : MonoBehaviour {
 	public int Damage;
-	public float Speed;
-	bool hitted=false;
-	float ImpulseH = 0;
+	public float Speed;	
+	public float ImpulseH = 0;
 	public int EnemyType {get;set;}
 	// Use this for initialization
 	void Start() 
@@ -109,9 +108,9 @@ public class EnemyBehaviour : MonoBehaviour {
         if (collider.gameObject.tag == Constants.TAG_PLAYER && !collider.gameObject.GetComponent<PlayerBehaviour>().Hitted)
         {		
 			if(gameObject.transform.position.x < collider.gameObject.transform.position.x)
-				collider.gameObject.GetComponent<PlayerBehaviour>().ImpulseH = 3;
+				collider.gameObject.GetComponent<PlayerBehaviour>().ImpulseH = 10;
 			else if (gameObject.transform.position.x > collider.gameObject.transform.position.x)
-				collider.gameObject.GetComponent<PlayerBehaviour>().ImpulseH = -3;
+				collider.gameObject.GetComponent<PlayerBehaviour>().ImpulseH = -10;
 				
 			if(collider.gameObject.GetComponent<PlayerBehaviour>().Attack)
 			{
