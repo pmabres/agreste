@@ -62,24 +62,9 @@ public class PlayerBehaviour : MonoBehaviour {
 				if(TimeFree >= Statics.TimeFree)
 				{Statics.FreeRoad = false; TimeFree=0;}
 			}
-			Debug.Log(ImpulseH);
-//			if(ImpulseH !=0)
-//			{
-//				if(ImpulseH < 0)
-//				{
-//					ImpulseH += 100000;
-//					if (ImpulseH > 0) ImpulseH = 0;
-//				}
-//				else if(ImpulseH >0)
-//				{
-//					ImpulseH -= 100000;
-//					if (ImpulseH < 0) ImpulseH = 0;
-//				}
-//			}
-			//if (ImpulseH != 0)
-			//{							
-				ImpulseH = Mathf.Lerp(ImpulseH,0,27);
-			//}
+									
+			ImpulseH = Mathf.Lerp(ImpulseH,0,27);
+			
 			if(Hitted)
 			{
 				TimeHit += Time.deltaTime;

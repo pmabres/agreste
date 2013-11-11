@@ -29,6 +29,9 @@ public class LevelController : MonoBehaviour {
 				if (Statics.Meters >= MetersPerLevel[Statics.CurrentLevel-1])
 				{
 					Statics.CurrentLevel++;
+					Statics.TimerSpawn -= 0.2f;
+					if(Statics.TimerSpawn <=0.5f)
+					{Statics.TimerSpawn=0.5f;}
 				}
 			}
 		}

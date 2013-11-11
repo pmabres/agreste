@@ -41,7 +41,9 @@ public class EnemyBehaviour : MonoBehaviour {
 		if (!Statics.Paused)
 		{	
 			ChasePlayer();
-			gameObject.transform.position = gameObject.transform.position - new Vector3(0 + ImpulseH,0,Speed);
+			//gameObject.transform.position = gameObject.transform.position - new Vector3(0 + ImpulseH,0,Speed);
+			gameObject.transform.LookAt(Statics.Player.transform.position);
+			gameObject.transform.Translate(Vector3.forward * Time.deltaTime);
 			if(ImpulseH !=0)
 			{
 				if(ImpulseH < 0)

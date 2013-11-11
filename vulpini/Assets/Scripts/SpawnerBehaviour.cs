@@ -109,6 +109,7 @@ public class SpawnerBehaviour : MonoBehaviour {
 	{
 		if (!Statics.Paused)
 		{
+			SpawnTimer = Statics.TimerSpawn;
 			SpawnEnemyLastTime += Time.deltaTime;
 			SpawnPowerLastTime += Time.deltaTime;
 			

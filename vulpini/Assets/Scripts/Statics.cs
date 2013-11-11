@@ -27,6 +27,7 @@ public static class Statics
 	public static bool Paused=false;	
 	public static int Meters=0;
 	public static int CurrentLevel=0;
+	public static float TimerSpawn = 2;
 	//Variable para guardar el High Score
 	public static int MaxScore;
 	//Guarda las patitas que tiene el personaje
