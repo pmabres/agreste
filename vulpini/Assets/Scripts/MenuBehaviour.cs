@@ -27,13 +27,13 @@ public class MenuBehaviour : MonoBehaviour {
 				Statics.GameOver.SetActive(false);
 				Statics.Menu.SetActive(false);
 				Statics.HUD.SetActive(true);
+				Statics.PreC.SetActive(false);
 			}
 		}
 		//MOUSE
 		else if (Input.GetMouseButtonDown(0) && Statics.Paused)
 		{	
 			
-
 			if (Statics.GameOver.activeSelf)
 			{
 				Statics.RestartGame=true;

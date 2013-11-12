@@ -21,6 +21,14 @@ public static class Constants {
 	public const string TAG_PAWS = "Paws";
 	public const int MAX_POWER_VIEW = 3;
 	
+	//Tag Pre
+	public const string TAG_PREC = "PreC";
+	public const string TAG_PRE1 = "Pre1";
+	public const string TAG_PRE2 = "Pre2";
+	public const string TAG_PRE3 = "Pre3";
+	public const string TAG_PRE4 = "Pre4";
+	
+	
 	//Speed enemigos
 	public const float SPEED_NINO_RANGED = 0.02f;
 	public const float SPEED_NINO_MELEE = 0;
@@ -37,7 +45,7 @@ public static class Constants {
 		
 	
 	public const int WIDESCREEN_IDEAL_WIDTH = 475;
-	public const float TOUCH_SCREEN_WIDTH_PROPORTION = 0.21f; 
+	public const float TOUCH_SCREEN_WIDTH_PROPORTION = 0.25f; 
 	public const float TOUCH_SCREEN_HEIGHT_PROPORTION = 0.185f;
 	
 	
