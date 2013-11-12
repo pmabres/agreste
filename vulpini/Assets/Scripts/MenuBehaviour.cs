@@ -55,7 +55,7 @@ public class MenuBehaviour : MonoBehaviour {
 		else if (Input.GetKeyDown(KeyCode.Escape) && Statics.Paused)
 		{
 			Debug.Log("QUIT");
-			Application.Quit();
+			//Application.Quit();
 		}
 		if (Input.GetMouseButtonUp(0) && State==1)
 		{

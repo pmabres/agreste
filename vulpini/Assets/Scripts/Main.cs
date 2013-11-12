@@ -30,6 +30,7 @@ public class Main : MonoBehaviour
 		Statics.Paused = true;
 		Statics.Terrains.gTerrains.transform.parent = gameObject.transform;
 		Statics.Paw.GetComponent<TextMesh>().text = Statics.Paws.ToString();
+		
 	}
 	
 	// Update is called once per frame

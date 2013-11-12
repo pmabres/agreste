@@ -3,38 +3,40 @@ using System.Collections;
 
 public class AccelerometerButton : MonoBehaviour 
 {
-
+	public Camera cam;	
 	// Use this for initialization
 	void Start () 
 	{
-	
+		if (Statics.AccelerometerActive) 
+			gameObject.GetComponent<TextMesh>().color = Color.white;
+		else
+			gameObject.GetComponent<TextMesh>().color = Color.grey;
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{			
 		if (Input.touchCount > 0 && Statics.Menu.activeSelf==true)
-		{			
-			float x1 = Camera.main.ScreenToWorldPoint(gameObject.transform.position - gameObject.transform.localScale /2).x -(float)25;
-			float x2 = Camera.main.ScreenToWorldPoint(gameObject.transform.position + gameObject.transform.localScale /2).x +(float)25;
-			float y1 = Camera.main.ScreenToWorldPoint(gameObject.transform.position - gameObject.transform.localScale /2).y -(float)25;			
-			float y2 = Camera.main.ScreenToWorldPoint(gameObject.transform.position + gameObject.transform.localScale /2).y +(float)25;
-			Debug.Log(x1);
-			Debug.Log(Input.GetTouch(0).position.x);
-			Debug.Break();
-			if (x1 <= Input.GetTouch(0).position.x && x2 >= Input.GetTouch(0).position.x &&
-				y1 <= Input.GetTouch(0).position.y && y2 >= Input.GetTouch(0).position.y)
-			{				
-				
-				Statics.AccelerometerActive = !Statics.AccelerometerActive;
-				if (Statics.AccelerometerActive)
-				{
-					gameObject.GetComponent<TextMesh>().color = Color.white;
-				}
-				else
-				{
-					gameObject.GetComponent<TextMesh>().color = Color.grey;
-				}				
+		{
+			if (Input.GetTouch (0).phase == TouchPhase.Began)
+			{
+			
+			Ray cursorRay = cam.ScreenPointToRay( Input.GetTouch(0).position );
+			Debug.Log(cursorRay.origin);
+            RaycastHit hit;
+			
+	            if( collider.Raycast( cursorRay, out hit, 1000.0f))
+	            {
+					Statics.AccelerometerActive = !Statics.AccelerometerActive;
+					if (Statics.AccelerometerActive)
+					{
+						gameObject.GetComponent<TextMesh>().color = Color.white;
+					}
+					else
+					{
+						gameObject.GetComponent<TextMesh>().color = Color.grey;
+					}		
+	            }
 			}
 		}
 	}

@@ -15,8 +15,8 @@ public static class Statics
 	
 	public static float VelocityAttack = 0.4f;
 	public static bool RestartGame=false;
-	public static int TreesPerTerrain=20;
-	public static int GrassPerTerrain=100;
+	public static int TreesPerTerrain=12;
+	public static int GrassPerTerrain=300;
 	public static TerrainList Terrains;
 	public static bool AccelerometerActive=false;
 	public static bool Paused=false;	
