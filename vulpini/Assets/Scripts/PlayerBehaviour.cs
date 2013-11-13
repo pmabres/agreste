@@ -97,7 +97,8 @@ public class PlayerBehaviour : MonoBehaviour {
 	void OnTriggerEnter(Collider collider)
     {
 		if (collider.gameObject.tag == Constants.TAG_TREE && !HittedTree)
-		{			
+		{
+			Handheld.Vibrate ();
 			//gameObject.transform.position -= new Vector3 (0,0,0.75f);
 			if(gameObject.transform.position.x < collider.gameObject.transform.position.x)
 			{

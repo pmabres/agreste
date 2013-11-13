@@ -11,6 +11,11 @@ public static class Statics
 	public static GameObject HUD;
 	public static GameObject Hit;
 	public static GameObject Paw;
+	public static GameObject PreC;
+	public static GameObject Pre1;
+	public static GameObject Pre2;
+	public static GameObject Pre3;
+	public static GameObject Pre4;
 	
 	
 	public static float VelocityAttack = 0.4f;

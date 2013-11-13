@@ -22,7 +22,6 @@ public class AccelerometerButton : MonoBehaviour
 			{
 			
 			Ray cursorRay = cam.ScreenPointToRay( Input.GetTouch(0).position );
-			Debug.Log(cursorRay.origin);
             RaycastHit hit;
 			
 	            if( collider.Raycast( cursorRay, out hit, 1000.0f))

@@ -82,6 +82,7 @@ public class EnemyBehaviour : MonoBehaviour {
     {
         if (collider.gameObject.tag == Constants.TAG_PLAYER && !collider.gameObject.GetComponent<PlayerBehaviour>().Hitted)
         {		
+			Handheld.Vibrate ();
 			if(gameObject.transform.position.x < collider.gameObject.transform.position.x)
 				collider.gameObject.GetComponent<PlayerBehaviour>().ImpulseH = 10;
 			else if (gameObject.transform.position.x > collider.gameObject.transform.position.x)
