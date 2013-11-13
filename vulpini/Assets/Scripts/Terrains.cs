@@ -164,18 +164,18 @@ public class Terrains:MonoBehaviour
 			int x =  Mathf.FloorToInt(Random.Range(terrain[i].Field.transform.position.x-terrain[i].Field.transform.localScale.x/2,terrain[i].Field.transform.position.x+terrain[i].Field.transform.localScale.x/2));
 			int z =  Mathf.FloorToInt(Random.Range(terrain[i].Field.transform.position.z-terrain[i].Field.transform.localScale.z/2,terrain[i].Field.transform.position.z+terrain[i].Field.transform.localScale.z/2));
 			int Selected = Mathf.FloorToInt(Random.Range(1,4));
-			if(Selected==1)
+			if(1==1)
 			{	
 				GameObject tree = Statics.Instantiate(Constants.NAME_TREE,new Vector3(x,0,z),terrain[i].Field.transform);		
 				tree.transform.Rotate(0, Random.Range(0,360),0);
 				
 			}
-			else if(Selected==2)
+			else if(1==2)
 			{
 				GameObject tree = Statics.Instantiate(Constants.NAME_TREE2,new Vector3(x,0,z),terrain[i].Field.transform);	
 				tree.transform.Rotate(0, Random.Range(0,360),0);
 			}
-			else if(Selected==3)
+			else if(5==3)
 			{
 				GameObject tree = Statics.Instantiate(Constants.NAME_TREE3,new Vector3(x,0,z),terrain[i].Field.transform);
 				tree.transform.Rotate(0, Random.Range(0,360),0);
