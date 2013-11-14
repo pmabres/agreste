@@ -22,10 +22,11 @@ public class Main : MonoBehaviour
 	 	Statics.PowerUpsHitted=0;
 		Statics.lstMissions.Clear();
 		Statics.PreC = GameObject.FindGameObjectWithTag(Constants.TAG_PREC);
-		Statics.Pre1 = GameObject.FindGameObjectWithTag(Constants.TAG_PRE1);
-		Statics.Pre2 = GameObject.FindGameObjectWithTag(Constants.TAG_PRE2);
-		Statics.Pre3 = GameObject.FindGameObjectWithTag(Constants.TAG_PRE3);
-		Statics.Pre4 = GameObject.FindGameObjectWithTag(Constants.TAG_PRE4);		
+//		Statics.Pre1 = GameObject.FindGameObjectWithTag(Constants.TAG_PRE1);
+//		Statics.Pre2 = GameObject.FindGameObjectWithTag(Constants.TAG_PRE2);
+//		Statics.Pre3 = GameObject.FindGameObjectWithTag(Constants.TAG_PRE3);
+//		Statics.Pre4 = GameObject.FindGameObjectWithTag(Constants.TAG_PRE4);	
+//		Statics.PreDesc = GameObject.FindGameObjectWithTag(Constants.TAG_PREDESC);	
 		
 	}
 	void Start () 

@@ -96,7 +96,7 @@ public class PlayerBehaviour : MonoBehaviour {
 	}
 	void OnTriggerEnter(Collider collider)
     {
-		if (collider.gameObject.tag == Constants.TAG_TREE && !HittedTree)
+		if (collider.gameObject.tag == Constants.TAG_TREE && !HittedTree && !Statics.Player.GetComponent<Avanzar>().ghost)
 		{
 			Handheld.Vibrate ();
 			//gameObject.transform.position -= new Vector3 (0,0,0.75f);

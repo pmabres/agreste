@@ -7,6 +7,10 @@ public class Avanzar : MonoBehaviour
 	public bool Speed = false;
 	private float TimeSpeed =0;
 	public bool corriendo=true;	
+	public bool Pre1 = false;
+	int mts = 0;
+	public bool ghost = false;
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -16,20 +20,32 @@ public class Avanzar : MonoBehaviour
 	void FixedUpdate () 
 	{	
 		if (!Statics.Paused)
-		{						
-			if(corriendo)
-			{			
+		{					
+			if(Pre1)
+			{
+				if(mts != 350)
+				{	
+					gameObject.transform.position += new Vector3(0,0,1);
+					mts++;
+				}
+				else
+					Pre1 = false;
 				
+				//gameObject.GetComponent<BoxCollider>().collider.enabled = true;
+			}
+			else if(corriendo)
+			{			
+				ghost = false;
 				if (Speed) {
 					TimeSpeed += Time.deltaTime;
 					if(TimeSpeed<Statics.MaxTimeSpeed){
 						motor.movement.maxForwardSpeed += 0.8f + Statics.Velocity;
 						motor.movement.maxSidewaysSpeed += 0.5f + Statics.Agility;
 						
-						if(motor.movement.maxForwardSpeed > 20)
+						if(motor.movement.maxForwardSpeed > 20 + Statics.Velocity)
 							motor.movement.maxForwardSpeed = 20;
 					
-						if(motor.movement.maxSidewaysSpeed > 20)
+						if(motor.movement.maxSidewaysSpeed > 20 + Statics.Agility)
 							motor.movement.maxSidewaysSpeed = 20;
 					}
 					else
@@ -42,14 +58,15 @@ public class Avanzar : MonoBehaviour
 				{
 					motor.movement.maxForwardSpeed += 0.4f + Statics.Velocity;
 					motor.movement.maxSidewaysSpeed += 0.2f + Statics.Agility;
-					if(motor.movement.maxForwardSpeed > 10)
+					if(motor.movement.maxForwardSpeed > 10 + Statics.Velocity )
 						motor.movement.maxForwardSpeed = 10;
 				
-					if(motor.movement.maxSidewaysSpeed > 10)
+					if(motor.movement.maxSidewaysSpeed > 10 + Statics.Agility)
 						motor.movement.maxSidewaysSpeed = 10;
 				}
-				motor.SetVelocity(new Vector3(motor.movement.velocity.x + gameObject.GetComponent<PlayerBehaviour>().ImpulseH,motor.movement.velocity.y,motor.movement.maxForwardSpeed + Statics.VelocityAttack));
+				//motor.SetVelocity(new Vector3(motor.movement.velocity.x + gameObject.GetComponent<PlayerBehaviour>().ImpulseH,motor.movement.velocity.y,motor.movement.maxForwardSpeed + Statics.VelocityAttack));
 			}
+			motor.SetVelocity(new Vector3(motor.movement.velocity.x + gameObject.GetComponent<PlayerBehaviour>().ImpulseH,motor.movement.velocity.y,motor.movement.maxForwardSpeed + Statics.VelocityAttack));
 		}
 	}
 }

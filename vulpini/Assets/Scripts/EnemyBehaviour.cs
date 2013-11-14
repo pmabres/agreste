@@ -80,7 +80,7 @@ public class EnemyBehaviour : MonoBehaviour {
 	}
 	void OnTriggerEnter(Collider collider)
     {
-        if (collider.gameObject.tag == Constants.TAG_PLAYER && !collider.gameObject.GetComponent<PlayerBehaviour>().Hitted)
+		if (collider.gameObject.tag == Constants.TAG_PLAYER && !collider.gameObject.GetComponent<PlayerBehaviour>().Hitted && !Statics.Player.GetComponent<Avanzar>().ghost)
         {		
 			Handheld.Vibrate ();
 			if(gameObject.transform.position.x < collider.gameObject.transform.position.x)

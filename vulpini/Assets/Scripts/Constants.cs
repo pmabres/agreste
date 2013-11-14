@@ -23,10 +23,11 @@ public static class Constants {
 	
 	//Tag Pre
 	public const string TAG_PREC = "PreC";
-	public const string TAG_PRE1 = "Pre1";
-	public const string TAG_PRE2 = "Pre2";
-	public const string TAG_PRE3 = "Pre3";
-	public const string TAG_PRE4 = "Pre4";
+//	public const string TAG_PRE1 = "Pre1";
+//	public const string TAG_PRE2 = "Pre2";
+//	public const string TAG_PRE3 = "Pre3";
+//	public const string TAG_PRE4 = "Pre4";
+//	public const string TAG_PREDESC = "PreDesc";
 	
 	
 	//Speed enemigos
