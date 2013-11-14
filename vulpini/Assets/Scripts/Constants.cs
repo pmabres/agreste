@@ -17,9 +17,13 @@ public static class Constants {
 	public const string TAG_GAMEOVER = "GameOver";
 	public const string TAG_MENU = "Menu";
 	public const string TAG_HUD = "HUD";
-	public const string TAG_POWER = "Powers";
+	public const string TAG_HEALTH = "Health";
+	public const string TAG_SPEED = "Speed";
+	public const string TAG_FREEROAD = "FreeRoad";
+	public const string TAG_ATTACK = "Attack";
 	public const string TAG_PAWS = "Paws";
-	public const int MAX_POWER_VIEW = 3;
+	public const string TAG_POWERS = "Powers";
+	public const int MAX_POWER_VIEW = 5;
 	
 	//Tag Pre
 	public const string TAG_PREC = "PreC";

@@ -5,18 +5,7 @@ public class PowerBehaviour : MonoBehaviour {
 	bool hitted=false;
 	// Use this for initialization
 	void Start () {
-		if (this.name == "Heal") {
-			gameObject.GetComponent<Light>().color=Color.green;
-		}
-		else if (this.name == "Speed") {
-			gameObject.GetComponent<Light>().color=Color.blue;
-		}
-		else if (this.name == "Attack") {
-			gameObject.GetComponent<Light>().color=Color.red;
-		}
-		else if (this.name == "Free") {
-			gameObject.GetComponent<Light>().color=Color.cyan;
-		}
+
 	}
 	
 	// Update is called once per frame
@@ -29,19 +18,20 @@ public class PowerBehaviour : MonoBehaviour {
         if (collider.gameObject.tag == Constants.TAG_PLAYER && !hitted)
         {			
 			Statics.PowerUpsHitted ++;
-			if (this.name == "Heal") {
+			if (this.tag == "Heal") {
 				if(collider.gameObject.GetComponent<PlayerBehaviour>().HitPoints < Statics.MaxHealth)
 					collider.gameObject.GetComponent<PlayerBehaviour>().HitPoints += 1;
 			}
-			else if (this.name == "Speed") {
+			else if (this.tag == "Speed") {
 				collider.gameObject.GetComponent<Avanzar>().Speed=true;
 			}
-			else if (this.name == "Attack") {
+			else if (this.tag == "Attack") {
 				collider.gameObject.GetComponent<PlayerBehaviour>().Attack=true;
 			}
-			else if (this.name == "Free") {
+			else if (this.tag == "FreeRoad") {
 				Statics.FreeRoad = true;
 			}
+			Statics.CountPowers -= 1;
 			hitted=true;
         }
     }

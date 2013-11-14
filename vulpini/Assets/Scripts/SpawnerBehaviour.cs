@@ -199,6 +199,7 @@ public class SpawnerBehaviour : MonoBehaviour {
 				{
 					SpawnPowerLastTime = 0;
 					string PowerName = null;
+
 					
 					for (int i = 0; i < (int) Constants.PowerNames.Max; i++) {
 						if(prob <= Powers[i,Statics.CurrentLevel-1])
@@ -214,22 +215,25 @@ public class SpawnerBehaviour : MonoBehaviour {
 						
 						if (Selected == (int)Constants.PowerNames.Heal) 
 						{
-							PowerName = "Heal";
+							PowerName = Constants.TAG_HEALTH;
+
 							//Debug.Log("Heal");
 						}
 						else if (Selected == (int)Constants.PowerNames.Speed) 
 						{
-							PowerName = "Speed";
+							PowerName = Constants.TAG_SPEED;
+
 							//Debug.Log("Speed");
 						}
 						else if (Selected == (int)Constants.PowerNames.Attack) 
 						{
-							PowerName = "Attack";
+							PowerName = Constants.TAG_ATTACK;
+
 							//Debug.Log("Attack");
 						}
 						else if (Selected == (int)Constants.PowerNames.Free) 
 						{
-							PowerName = "Free";
+							PowerName = Constants.TAG_FREEROAD;
 							//Debug.Log("Free");
 						}
 						
@@ -238,7 +242,7 @@ public class SpawnerBehaviour : MonoBehaviour {
 							gameObject.transform.position= new Vector3(Random.Range(Statics.Player.transform.position.x - 50,Statics.Player.transform.position.x + 50),
 																			gameObject.transform.position.y,
 																			Random.Range(Statics.Player.transform.position.z + 50,Statics.Player.transform.position.z + 150));
-							Statics.Instantiate("Power",new Vector3(gameObject.transform.position.x,gameObject.transform.position.y + 1,gameObject.transform.position.z),GameObject.FindGameObjectWithTag(Constants.TAG_POWER).transform, PowerName );
+							Statics.Instantiate(PowerName,new Vector3(gameObject.transform.position.x,gameObject.transform.position.y + 1,gameObject.transform.position.z),GameObject.FindGameObjectWithTag(Constants.TAG_POWERS).transform);
 							Statics.CountPowers ++;
 						}
 					}
