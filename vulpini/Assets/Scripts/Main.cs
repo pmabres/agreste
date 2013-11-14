@@ -30,8 +30,7 @@ public class Main : MonoBehaviour
 		
 	}
 	void Start () 
-	{		
-		
+	{	
 		Screen.sleepTimeout = SleepTimeout.NeverSleep;
 		Statics.AccelerometerActive = false;
 		Statics.Paused = true;

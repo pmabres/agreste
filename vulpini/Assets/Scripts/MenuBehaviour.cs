@@ -2,8 +2,6 @@
 using System.Collections;
 
 public class MenuBehaviour : MonoBehaviour {
-		
-	public int State = 0;
 	// Use this for initialization
 	void Start () 
 	{		
@@ -47,6 +45,8 @@ public class MenuBehaviour : MonoBehaviour {
 				Statics.Menu.SetActive(false);
 				Statics.HUD.SetActive(true);
 				Statics.Paw.SetActive(true);
+				Statics.PreC.SetActive(false);
+				Statics.PreC.GetComponent<PreAdqBehaviour>().Swich(false);
 			}
 		}
 		else if (Input.GetKeyDown(KeyCode.Escape) && !Statics.Paused) 	   	
@@ -60,15 +60,6 @@ public class MenuBehaviour : MonoBehaviour {
 		{
 			Debug.Log("QUIT");
 			//Application.Quit();
-		}
-		if (Input.GetMouseButtonUp(0) && State==1)
-		{
-			if (Input.mousePosition.x >= 743 && Input.mousePosition.x <= 763
-				&& Input.mousePosition.y >= 54 && Input.mousePosition.y <= 74)
-			{
-				Statics.Player.GetComponent<Avanzar>().Speed = true;
-			}
-			State=0;
 		}
 	}	
 }
