@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class TerrainList
 {
@@ -22,6 +23,7 @@ public class TerrainsProperties
 public class Terrains:MonoBehaviour
 {	
 	private TerrainsProperties[] terrain;	
+	private List<GameObject> Recicled = new List<GameObject>();
 	
 	public Terrains()
 	{		
@@ -136,73 +138,104 @@ public class Terrains:MonoBehaviour
 		 
 		terrain[1].PositionChange = new Vector3(0,0,terrain[4].Field.transform.localScale.z);
 		terrain[1].Field = Statics.Instantiate(Constants.TAG_TERRAIN, terrain[4].Field.transform.position + terrain[1].PositionChange, gameObject.transform);
-		GenerateEnvironment();
+		GenerateEnvironment(true);
 	}
 	void CreateTerrain(int i)
 	{
-		terrain[i].Field = Statics.Instantiate(Constants.TAG_TERRAIN, terrain[4].Field.transform.position + terrain[i].PositionChange,gameObject.transform);		
+		if (Recicled.Count!=0)
+		{
+			terrain[i].Field = Recicled[0];
+			terrain[i].Field.transform.position = (terrain[4].Field.transform.position + terrain[i].PositionChange);
+			Recicled.RemoveAt(0);
+		}
+		else
+		{
+			terrain[i].Field = Statics.Instantiate(Constants.TAG_TERRAIN, terrain[4].Field.transform.position + terrain[i].PositionChange,gameObject.transform);		
+		}
 		GenerateEnvironment(i);
 	}
 	void DestroyTerrain(int i)
 	{
-		GameObject.Destroy(terrain[i].Field);
+		//GameObject.Destroy(terrain[i].Field);
+		Recicled.Add(terrain[i].Field);
 		terrain[i].Field = null;	
 	}
-	void GenerateEnvironment()
+	void GenerateEnvironment(bool create)
 	{
-		GenerateEnvironment(0);
-		GenerateEnvironment(1);
-		GenerateEnvironment(2);
-		GenerateEnvironment(3);
-		GenerateEnvironment(4);
-		GenerateEnvironment(5);
+		GenerateEnvironment(0,create);
+		GenerateEnvironment(1,create);
+		GenerateEnvironment(2,create);
+		GenerateEnvironment(3,create);
+		GenerateEnvironment(4,create);
+		GenerateEnvironment(5,create);
 	}
-	void GenerateEnvironment(int i)
+	void GenerateEnvironment(int i, bool create = false)
 	{
-		for (int b=1;b<Statics.TreesPerTerrain;b++)
+		if (!create)
 		{
-			int x =  Mathf.FloorToInt(Random.Range(terrain[i].Field.transform.position.x-terrain[i].Field.transform.localScale.x/2,terrain[i].Field.transform.position.x+terrain[i].Field.transform.localScale.x/2));
-			int z =  Mathf.FloorToInt(Random.Range(terrain[i].Field.transform.position.z-terrain[i].Field.transform.localScale.z/2,terrain[i].Field.transform.position.z+terrain[i].Field.transform.localScale.z/2));
-			int Selected = Mathf.FloorToInt(Random.Range(1,4));
-			if(1==1)
-			{	
-				GameObject tree = Statics.Instantiate(Constants.NAME_TREE,new Vector3(x,0,z),terrain[i].Field.transform);		
-				tree.transform.Rotate(0, Random.Range(0,360),0);
-				
-			}
-			else if(1==2)
+			foreach (Transform t in terrain[i].Field.transform)
 			{
-				GameObject tree = Statics.Instantiate(Constants.NAME_TREE2,new Vector3(x,0,z),terrain[i].Field.transform);	
-				tree.transform.Rotate(0, Random.Range(0,360),0);
-			}
-			else if(5==3)
-			{
-				GameObject tree = Statics.Instantiate(Constants.NAME_TREE3,new Vector3(x,0,z),terrain[i].Field.transform);
-				tree.transform.Rotate(0, Random.Range(0,360),0);
+				int x =  Mathf.FloorToInt(Random.Range(terrain[i].Field.transform.position.x-terrain[i].Field.transform.localScale.x/2,terrain[i].Field.transform.position.x+terrain[i].Field.transform.localScale.x/2));
+				int z =  Mathf.FloorToInt(Random.Range(terrain[i].Field.transform.position.z-terrain[i].Field.transform.localScale.z/2,terrain[i].Field.transform.position.z+terrain[i].Field.transform.localScale.z/2));
+
+				if (t.tag == Constants.TAG_TREE)
+				{
+					t.Rotate(0,Random.Range(0,360),0);
+					t.position = new Vector3(x,0,z);
+				}
+				else
+				{
+					t.position = new Vector3(x,0.5f,z);
+				}
 			}
 		}
-		GameObject grass=null;
-		for (int b=0;b<Statics.GrassPerTerrain;b++)
+		else
 		{
-			
-			int x =  Mathf.FloorToInt(Random.Range(terrain[i].Field.transform.position.x-terrain[i].Field.transform.localScale.x/2,terrain[i].Field.transform.position.x+terrain[i].Field.transform.localScale.x/2));
-			int z =  Mathf.FloorToInt(Random.Range(terrain[i].Field.transform.position.z-terrain[i].Field.transform.localScale.z/2,terrain[i].Field.transform.position.z+terrain[i].Field.transform.localScale.z/2));
-			int Selected = Mathf.FloorToInt(Random.Range(1,4));
-			/*if(1==1)
-			{					
+			for (int b=1;b<Statics.TreesPerTerrain;b++)
+			{
+				int x =  Mathf.FloorToInt(Random.Range(terrain[i].Field.transform.position.x-terrain[i].Field.transform.localScale.x/2,terrain[i].Field.transform.position.x+terrain[i].Field.transform.localScale.x/2));
+				int z =  Mathf.FloorToInt(Random.Range(terrain[i].Field.transform.position.z-terrain[i].Field.transform.localScale.z/2,terrain[i].Field.transform.position.z+terrain[i].Field.transform.localScale.z/2));
+				//int Selected = Mathf.FloorToInt(Random.Range(1,4));
+	//			if(1==1)
+	//			{	
+
+					GameObject tree = Statics.Instantiate(Constants.NAME_TREE,new Vector3(x,0,z),terrain[i].Field.transform);
+					tree.transform.Rotate(0, Random.Range(0,360),0);
+					
+	//			}
+	//			else if(1==2)
+	//			{
+	//				GameObject tree = Statics.Instantiate(Constants.NAME_TREE2,new Vector3(x,0,z),terrain[i].Field.transform);	
+	//				tree.transform.Rotate(0, Random.Range(0,360),0);
+	//			}
+	//			else if(5==3)
+	//			{
+	//				GameObject tree = Statics.Instantiate(Constants.NAME_TREE3,new Vector3(x,0,z),terrain[i].Field.transform);
+	//				tree.transform.Rotate(0, Random.Range(0,360),0);
+	//			}
+			}
+			GameObject grass=null;
+			for (int b=0;b<Statics.GrassPerTerrain;b++)
+			{
+				
+				int x =  Mathf.FloorToInt(Random.Range(terrain[i].Field.transform.position.x-terrain[i].Field.transform.localScale.x/2,terrain[i].Field.transform.position.x+terrain[i].Field.transform.localScale.x/2));
+				int z =  Mathf.FloorToInt(Random.Range(terrain[i].Field.transform.position.z-terrain[i].Field.transform.localScale.z/2,terrain[i].Field.transform.position.z+terrain[i].Field.transform.localScale.z/2));
+				int Selected = Mathf.FloorToInt(Random.Range(1,4));
+				/*if(1==1)
+				{					
+					grass = Statics.Instantiate(Constants.NAME_GRASS1,new Vector3(x,0.5f,z),terrain[i].Field.transform);
+				}
+				else if(3==2)
+				{
+					grass = Statics.Instantiate(Constants.NAME_GRASS2,new Vector3(x,0.5f,z),terrain[i].Field.transform);	
+				}
+				else if(3==3)
+				{
+					grass = Statics.Instantiate(Constants.NAME_GRASS3,new Vector3(x,0.5f,z),terrain[i].Field.transform);
+				}*/		
 				grass = Statics.Instantiate(Constants.NAME_GRASS1,new Vector3(x,0.5f,z),terrain[i].Field.transform);
-			}
-			else if(3==2)
-			{
-				grass = Statics.Instantiate(Constants.NAME_GRASS2,new Vector3(x,0.5f,z),terrain[i].Field.transform);	
-			}
-			else if(3==3)
-			{
-				grass = Statics.Instantiate(Constants.NAME_GRASS3,new Vector3(x,0.5f,z),terrain[i].Field.transform);
-			}*/		
-			grass = Statics.Instantiate(Constants.NAME_GRASS1,new Vector3(x,0.5f,z),terrain[i].Field.transform);
-			
-		}		  
-	     
+				
+			}		  
+		}
 	}
 }
