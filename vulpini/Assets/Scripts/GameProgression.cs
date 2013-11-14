@@ -22,7 +22,7 @@ public class GameProgression : MonoBehaviour {
 		}
 		else
 		{
-			Statics.MaxHealth = 2;			
+			Statics.MaxHealth = 1;			
 		}
 	}
 	public void Save()
