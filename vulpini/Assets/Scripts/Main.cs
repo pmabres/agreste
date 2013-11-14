@@ -59,7 +59,6 @@ public class Main : MonoBehaviour
 				Statics.GameOver.SetActive(true);
 				Statics.HUD.SetActive(false);
 				Statics.Menu.SetActive(false);
-				Statics.PreC.SetActive(true);
 				gameObject.GetComponent<GameProgression>().Save();
 			}
 		}
