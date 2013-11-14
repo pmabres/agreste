@@ -27,6 +27,7 @@ public class MenuBehaviour : MonoBehaviour {
 				Statics.GameOver.SetActive(false);
 				Statics.Menu.SetActive(false);
 				Statics.HUD.SetActive(true);
+				Statics.Paw.SetActive(false);
 				Statics.PreC.SetActive(false);
 				Statics.PreC.GetComponent<PreAdqBehaviour>().Swich(false);
 			}
@@ -45,12 +46,13 @@ public class MenuBehaviour : MonoBehaviour {
 				Statics.GameOver.SetActive(false);
 				Statics.Menu.SetActive(false);
 				Statics.HUD.SetActive(true);
+				Statics.Paw.SetActive(true);
 			}
 		}
 		else if (Input.GetKeyDown(KeyCode.Escape) && !Statics.Paused) 	   	
 		{
 			Statics.Paused = true;
-			Statics.PreC.SetActive(true);
+			Statics.Paw.SetActive(true);
 			Statics.Menu.SetActive(true);
 			GameObject.FindGameObjectWithTag(Constants.TAG_MAIN).GetComponent<GameProgression>().Save();
 		}	

@@ -64,15 +64,16 @@ public class PreAdqBehaviour : MonoBehaviour {
 					{
 						selected = pre2;
 						Desc(20);
-						preDesc.GetComponent<TextMesh>().text = "Salud \n Nivel: " + Statics.MaxHealth + " \n Coste: 20 Paws.";
+						preDesc.GetComponent<TextMesh>().text = "Salud \n Nivel: " + (Statics.MaxHealth - 2) + " \n Coste: 20 Paws.";
 					}
-					else if(Statics.Paws >= 20)
+					else if(Statics.Paws >= 20 && Statics.MaxHealth < 6)
 					{
 						Statics.Paws -= 20;
 						Statics.MaxHealth ++;
-						GameObject.FindGameObjectWithTag(Constants.TAG_MAIN).GetComponent<GameProgression>().Save();
 						Desc(20);
-						preDesc.GetComponent<TextMesh>().text = "Salud \n Nivel: " + Statics.MaxHealth + " \n Coste: 20 Paws.";
+						preDesc.GetComponent<TextMesh>().text = "Salud \n Nivel: " + (Statics.MaxHealth - 2) + " \n Coste: 20 Paws.";
+						GameObject.FindGameObjectWithTag(Constants.TAG_MAIN).GetComponent<GameProgression>().Save();
+
 					}
 				}
 
@@ -84,7 +85,7 @@ public class PreAdqBehaviour : MonoBehaviour {
 						Desc(20);
 						preDesc.GetComponent<TextMesh>().text = "Velocidad \n Nivel: " + Statics.Velocity + " \n Coste: 20 Paws.";
 					}
-					else if (Statics.Paws >= 20)
+					else if (Statics.Paws >= 20 && Statics.Velocity < 5)
 					{
 						Statics.Paws -= 20;
 						Statics.Velocity += 1;
@@ -102,7 +103,7 @@ public class PreAdqBehaviour : MonoBehaviour {
 						Desc(30);
 						preDesc.GetComponent<TextMesh>().text = "Agilidad \n Nivel: " + Statics.Agility + " \n Coste: 30 Paws.";
 					}
-					else if (Statics.Paws >= 30)
+					else if (Statics.Paws >= 30 && Statics.Agility < 5)
 					{
 						Statics.Paws -= 30;
 						Statics.Agility += 1;
