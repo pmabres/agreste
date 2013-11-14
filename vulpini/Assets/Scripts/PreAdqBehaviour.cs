@@ -3,6 +3,7 @@ using System.Collections;
 
 public class PreAdqBehaviour : MonoBehaviour {
 	public Camera cam;	
+	public GameObject preC;
 	public GameObject pre1;
 	public GameObject pre2;
 	public GameObject pre3;
@@ -10,7 +11,6 @@ public class PreAdqBehaviour : MonoBehaviour {
 	public GameObject preDesc;
 	public GameObject selected;
 
-	bool display = false;
 	Ray cursorRay;
 	RaycastHit hit;
 	
@@ -26,9 +26,20 @@ public class PreAdqBehaviour : MonoBehaviour {
 			if (Input.GetTouch (0).phase == TouchPhase.Began)
 			{
 				cursorRay = cam.ScreenPointToRay(Input.GetTouch(0).position);			
-				if(collider.Raycast( cursorRay, out hit, 1000.0f) && !display)
+				if(preC.collider.Raycast( cursorRay, out hit, 1000.0f))
 	            {
-					Swich(true);
+					if(selected == null)
+					{
+						selected = preC;
+						Swich(true);
+					}
+					else
+					{
+						selected = null;
+						preDesc.GetComponent<TextMesh>().text = "";
+						Swich(false);
+					}
+
 	            }
 				else if(pre1.collider.Raycast(cursorRay,out hit, 1000.0f))
 				{
@@ -42,7 +53,6 @@ public class PreAdqBehaviour : MonoBehaviour {
 					{
 						Statics.Player.GetComponent<Avanzar>().ghost = true;
 						Statics.Paws -= 15;
-						Swich(false);
 					}
 				}
 
@@ -59,7 +69,6 @@ public class PreAdqBehaviour : MonoBehaviour {
 						Statics.Paws -= 20;
 						Statics.MaxHealth ++;
 						GameObject.FindGameObjectWithTag(Constants.TAG_MAIN).GetComponent<GameProgression>().Save();
-						Swich(false);
 					}
 				}
 
@@ -71,14 +80,14 @@ public class PreAdqBehaviour : MonoBehaviour {
 						Desc(20);
 						preDesc.GetComponent<TextMesh>().text = "Velocidad \n Nivel: " + Statics.Velocity + " \n Coste: 20 Paws.";
 					}
-					else
+					else if (Statics.Paws > 20)
 					{
 						Statics.Paws -= 20;
 						Statics.Velocity += 0.3f;
 						GameObject.FindGameObjectWithTag(Constants.TAG_MAIN).GetComponent<GameProgression>().Save();
-						Swich(false);
 					}
 				}
+
 				else if(pre4.collider.Raycast(cursorRay, out hit, 1000.0f))
 				{
 					if(selected != pre4)
@@ -87,12 +96,11 @@ public class PreAdqBehaviour : MonoBehaviour {
 						Desc(30);
 						preDesc.GetComponent<TextMesh>().text = "Agilidad \n Nivel: " + Statics.Agility + " \n Coste: 20 Paws.";
 					}
-					else
+					else if (Statics.Paws > 30)
 					{
 						Statics.Paws -= 30;
 						Statics.Agility += 0.5f;
 						GameObject.FindGameObjectWithTag(Constants.TAG_MAIN).GetComponent<GameProgression>().Save();
-						Swich(false);
 					}
 				}
 			}
@@ -113,6 +121,5 @@ public class PreAdqBehaviour : MonoBehaviour {
 		pre3.SetActive(x);
 		pre4.SetActive(x);
 		preDesc.SetActive(x);
-		display = x;
 	}
 }
