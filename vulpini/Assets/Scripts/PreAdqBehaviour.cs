@@ -40,8 +40,6 @@ public class PreAdqBehaviour : MonoBehaviour {
 					}
 					else if(Statics.Paws > 15)
 					{
-						Statics.Player.GetComponent<BoxCollider>().size = new Vector3(0,0,0);
-						Statics.Player.GetComponent<Avanzar>().Pre1 = true;
 						Statics.Player.GetComponent<Avanzar>().ghost = true;
 						Statics.Paws -= 15;
 						Swich(false);
@@ -107,7 +105,8 @@ public class PreAdqBehaviour : MonoBehaviour {
 		else
 		{ preDesc.GetComponent<TextMesh>().color = Color.red;}
 	}
-	void Swich( bool x)
+
+	public void Swich( bool x)
 	{
 		pre1.SetActive(x);
 		pre2.SetActive(x);

@@ -28,6 +28,7 @@ public class MenuBehaviour : MonoBehaviour {
 				Statics.Menu.SetActive(false);
 				Statics.HUD.SetActive(true);
 				Statics.PreC.SetActive(false);
+				Statics.PreC.GetComponent<PreAdqBehaviour>().Swich(false);
 			}
 		}
 		//MOUSE
@@ -49,6 +50,7 @@ public class MenuBehaviour : MonoBehaviour {
 		else if (Input.GetKeyDown(KeyCode.Escape) && !Statics.Paused) 	   	
 		{
 			Statics.Paused = true;
+			Statics.PreC.SetActive(true);
 			Statics.Menu.SetActive(true);
 			GameObject.FindGameObjectWithTag(Constants.TAG_MAIN).GetComponent<GameProgression>().Save();
 		}	

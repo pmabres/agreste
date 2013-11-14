@@ -7,7 +7,7 @@ public class Avanzar : MonoBehaviour
 	public bool Speed = false;
 	private float TimeSpeed =0;
 	public bool corriendo=true;	
-	public bool Pre1 = false;
+
 	int mts = 0;
 	public bool ghost = false;
 
@@ -21,7 +21,7 @@ public class Avanzar : MonoBehaviour
 	{	
 		if (!Statics.Paused)
 		{					
-			if(Pre1)
+			if(ghost)
 			{
 				if(mts != 350)
 				{	
@@ -29,13 +29,12 @@ public class Avanzar : MonoBehaviour
 					mts++;
 				}
 				else
-					Pre1 = false;
+					ghost = false;
 				
 				//gameObject.GetComponent<BoxCollider>().collider.enabled = true;
 			}
 			else if(corriendo)
 			{			
-				ghost = false;
 				if (Speed) {
 					TimeSpeed += Time.deltaTime;
 					if(TimeSpeed<Statics.MaxTimeSpeed){
