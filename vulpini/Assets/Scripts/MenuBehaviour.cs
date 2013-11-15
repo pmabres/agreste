@@ -33,20 +33,26 @@ public class MenuBehaviour : MonoBehaviour {
 		//MOUSE
 		else if (Input.GetMouseButtonDown(0) && Statics.Paused)
 		{	
+			if(Input.mousePosition.x >Screen.width*Constants.TOUCH_SCREEN_WIDTH_PROPORTION &&
+			   Input.mousePosition.x <Screen.width - Screen.width * Constants.TOUCH_SCREEN_WIDTH_PROPORTION &&
+			   Input.mousePosition.y >Screen.height*Constants.TOUCH_SCREEN_HEIGHT_PROPORTION &&
+			   Input.mousePosition.y <Screen.height - Screen.height * Constants.TOUCH_SCREEN_HEIGHT_PROPORTION)
+			{
 			
-			if (Statics.GameOver.activeSelf)
-			{
-				Statics.RestartGame=true;
-			}
-			else if(Statics.Paused == true)
-			{
-				Statics.Paused = false;			
-				Statics.GameOver.SetActive(false);
-				Statics.Menu.SetActive(false);
-				Statics.HUD.SetActive(true);
-				Statics.Paw.SetActive(true);
-				Statics.PreC.SetActive(false);
-				Statics.PreC.GetComponent<PreAdqBehaviour>().Swich(false);
+				if (Statics.GameOver.activeSelf)
+				{
+					Statics.RestartGame=true;
+				}
+				else if(Statics.Paused == true)
+				{
+					Statics.Paused = false;			
+					Statics.GameOver.SetActive(false);
+					Statics.Menu.SetActive(false);
+					Statics.HUD.SetActive(true);
+					Statics.Paw.SetActive(true);
+					Statics.PreC.SetActive(false);
+					Statics.PreC.GetComponent<PreAdqBehaviour>().Swich(false);
+				}
 			}
 		}
 		else if (Input.GetKeyDown(KeyCode.Escape) && !Statics.Paused) 	   	

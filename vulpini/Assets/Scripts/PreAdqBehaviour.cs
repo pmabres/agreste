@@ -21,97 +21,108 @@ public class PreAdqBehaviour : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if(Input.GetMouseButtonDown(0) && Statics.Menu.activeSelf==true && Statics.Paused)
+		{
+			cursorRay = cam.ScreenPointToRay(Input.mousePosition);	
+			PreColliders(cursorRay);
+		}
+
 		if (Input.touchCount > 0 && Statics.Menu.activeSelf==true && Statics.Paused)
 		{
 			if (Input.GetTouch (0).phase == TouchPhase.Began)
 			{
-				cursorRay = cam.ScreenPointToRay(Input.GetTouch(0).position);			
-				if(preC.collider.Raycast( cursorRay, out hit, 1000.0f))
-	            {
-					if(selected == null)
-					{
-						selected = preC;
-						Swich(true);
-					}
-					else
-					{
-						selected = null;
-						preDesc.GetComponent<TextMesh>().text = "";
-						Swich(false);
-					}
+				cursorRay = cam.ScreenPointToRay(Input.GetTouch(0).position);
+				PreColliders(cursorRay);
+			}
+		}
+	}
 
-	            }
-				else if(pre1.collider.Raycast(cursorRay,out hit, 1000.0f))
-				{
-					if(selected != pre1)
-					{
-						selected = pre1;
-						Desc(15);
-						preDesc.GetComponent<TextMesh>().text = "Inicio Adelantado \n 400mts. \n Coste: 15 Paws.";
-					}
-					else if(Statics.Paws >= 15)
-					{
-						Statics.Player.GetComponent<Avanzar>().ghost = true;
-						Statics.Paws -= 15;
-						Desc(15);
-						preDesc.GetComponent<TextMesh>().text = "Inicio Adelantado \n 400mts. \n Coste: 15 Paws.";
-					}
-				}
-
-				else if(pre2.collider.Raycast(cursorRay, out hit, 1000.0f))
-				{
-					if(selected != pre2)
-					{
-						selected = pre2;
-						Desc(20);
-						preDesc.GetComponent<TextMesh>().text = "Salud \n Nivel: " + (Statics.MaxHealth - 2) + " \n Coste: 20 Paws.";
-					}
-					else if(Statics.Paws >= 20 && Statics.MaxHealth < 6)
-					{
-						Statics.Paws -= 20;
-						Statics.MaxHealth ++;
-						Desc(20);
-						preDesc.GetComponent<TextMesh>().text = "Salud \n Nivel: " + (Statics.MaxHealth - 2) + " \n Coste: 20 Paws.";
-						GameObject.FindGameObjectWithTag(Constants.TAG_MAIN).GetComponent<GameProgression>().Save();
-
-					}
-				}
-
-				else if(pre3.collider.Raycast(cursorRay, out hit, 1000.0f))
-				{
-					if(selected != pre3)
-					{
-						selected = pre3;
-						Desc(20);
-						preDesc.GetComponent<TextMesh>().text = "Velocidad \n Nivel: " + Statics.Velocity + " \n Coste: 20 Paws.";
-					}
-					else if (Statics.Paws >= 20 && Statics.Velocity < 5)
-					{
-						Statics.Paws -= 20;
-						Statics.Velocity += 1;
-						Desc(20);
-						preDesc.GetComponent<TextMesh>().text = "Velocidad \n Nivel: " + Statics.Velocity + " \n Coste: 20 Paws.";
-						GameObject.FindGameObjectWithTag(Constants.TAG_MAIN).GetComponent<GameProgression>().Save();
-					}
-				}
-
-				else if(pre4.collider.Raycast(cursorRay, out hit, 1000.0f))
-				{
-					if(selected != pre4)
-					{
-						selected = pre4;
-						Desc(30);
-						preDesc.GetComponent<TextMesh>().text = "Agilidad \n Nivel: " + Statics.Agility + " \n Coste: 30 Paws.";
-					}
-					else if (Statics.Paws >= 30 && Statics.Agility < 5)
-					{
-						Statics.Paws -= 30;
-						Statics.Agility += 1;
-						Desc(30);
-						preDesc.GetComponent<TextMesh>().text = "Agilidad \n Nivel: " + Statics.Agility + " \n Coste: 30 Paws.";
-						GameObject.FindGameObjectWithTag(Constants.TAG_MAIN).GetComponent<GameProgression>().Save();
-					}
-				}
+	void PreColliders(Ray cursorRay)
+	{
+		if(preC.collider.Raycast( cursorRay, out hit, 1000.0f))
+		{
+			if(selected == null)
+			{
+				selected = preC;
+				Swich(true);
+			}
+			else
+			{
+				selected = null;
+				preDesc.GetComponent<TextMesh>().text = "";
+				Swich(false);
+			}
+			
+		}
+		else if(pre1.collider.Raycast(cursorRay,out hit, 1000.0f))
+		{
+			if(selected != pre1)
+			{
+				selected = pre1;
+				Desc(15);
+				preDesc.GetComponent<TextMesh>().text = "Inicio Adelantado \n 400mts. \n Coste: 15 Paws.";
+			}
+			else if(Statics.Paws >= 15)
+			{
+				Statics.Player.GetComponent<Avanzar>().ghost = true;
+				Statics.Paws -= 15;
+				Desc(15);
+				preDesc.GetComponent<TextMesh>().text = "Inicio Adelantado \n 400mts. \n Coste: 15 Paws.";
+			}
+		}
+		
+		else if(pre2.collider.Raycast(cursorRay, out hit, 1000.0f))
+		{
+			if(selected != pre2)
+			{
+				selected = pre2;
+				Desc(20);
+				preDesc.GetComponent<TextMesh>().text = "Salud \n Nivel: " + (Statics.MaxHealth - 2) + " \n Coste: 20 Paws.";
+			}
+			else if(Statics.Paws >= 20 && Statics.MaxHealth < 6)
+			{
+				Statics.Paws -= 20;
+				Statics.MaxHealth ++;
+				Desc(20);
+				preDesc.GetComponent<TextMesh>().text = "Salud \n Nivel: " + (Statics.MaxHealth - 2) + " \n Coste: 20 Paws.";
+				GameObject.FindGameObjectWithTag(Constants.TAG_MAIN).GetComponent<GameProgression>().Save();
+				
+			}
+		}
+		
+		else if(pre3.collider.Raycast(cursorRay, out hit, 1000.0f))
+		{
+			if(selected != pre3)
+			{
+				selected = pre3;
+				Desc(20);
+				preDesc.GetComponent<TextMesh>().text = "Velocidad \n Nivel: " + Statics.Velocity + " \n Coste: 20 Paws.";
+			}
+			else if (Statics.Paws >= 20 && Statics.Velocity < 5)
+			{
+				Statics.Paws -= 20;
+				Statics.Velocity += 1;
+				Desc(20);
+				preDesc.GetComponent<TextMesh>().text = "Velocidad \n Nivel: " + Statics.Velocity + " \n Coste: 20 Paws.";
+				GameObject.FindGameObjectWithTag(Constants.TAG_MAIN).GetComponent<GameProgression>().Save();
+			}
+		}
+		
+		else if(pre4.collider.Raycast(cursorRay, out hit, 1000.0f))
+		{
+			if(selected != pre4)
+			{
+				selected = pre4;
+				Desc(30);
+				preDesc.GetComponent<TextMesh>().text = "Agilidad \n Nivel: " + Statics.Agility + " \n Coste: 30 Paws.";
+			}
+			else if (Statics.Paws >= 30 && Statics.Agility < 5)
+			{
+				Statics.Paws -= 30;
+				Statics.Agility += 1;
+				Desc(30);
+				preDesc.GetComponent<TextMesh>().text = "Agilidad \n Nivel: " + Statics.Agility + " \n Coste: 30 Paws.";
+				GameObject.FindGameObjectWithTag(Constants.TAG_MAIN).GetComponent<GameProgression>().Save();
 			}
 		}
 	}
