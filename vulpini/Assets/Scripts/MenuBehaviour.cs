@@ -28,6 +28,7 @@ public class MenuBehaviour : MonoBehaviour {
 				Statics.Paw.SetActive(false);
 				Statics.PreC.SetActive(false);
 				Statics.PreC.GetComponent<PreAdqBehaviour>().Swich(false);
+				Statics.Titulo.SetActive(false);
 			}
 		}
 		//MOUSE
@@ -52,6 +53,7 @@ public class MenuBehaviour : MonoBehaviour {
 					Statics.Paw.SetActive(true);
 					Statics.PreC.SetActive(false);
 					Statics.PreC.GetComponent<PreAdqBehaviour>().Swich(false);
+					Statics.Titulo.SetActive(false);
 				}
 			}
 		}
@@ -60,6 +62,7 @@ public class MenuBehaviour : MonoBehaviour {
 			Statics.Paused = true;
 			Statics.Paw.SetActive(true);
 			Statics.Menu.SetActive(true);
+			Statics.Titulo.SetActive(true);
 			GameObject.FindGameObjectWithTag(Constants.TAG_MAIN).GetComponent<GameProgression>().Save();
 		}	
 		else if (Input.GetKeyDown(KeyCode.Escape) && Statics.Paused)

@@ -25,21 +25,22 @@ public class PreAdqBehaviour : MonoBehaviour {
 		{
 			cursorRay = cam.ScreenPointToRay(Input.mousePosition);	
 			PreColliders(cursorRay);
+			Debug.Log("entro1");
 		}
-
-		if (Input.touchCount > 0 && Statics.Menu.activeSelf==true && Statics.Paused)
+		else if (Input.touchCount > 0 && Statics.Menu.activeSelf==true && Statics.Paused)
 		{
 			if (Input.GetTouch (0).phase == TouchPhase.Began)
 			{
 				cursorRay = cam.ScreenPointToRay(Input.GetTouch(0).position);
 				PreColliders(cursorRay);
+				Debug.Log("entro");
 			}
 		}
 	}
 
 	void PreColliders(Ray cursorRay)
 	{
-		if(preC.collider.Raycast( cursorRay, out hit, 1000.0f))
+		if(preC.collider.Raycast(cursorRay, out hit, 1000.0f))
 		{
 			if(selected == null)
 			{
@@ -126,6 +127,7 @@ public class PreAdqBehaviour : MonoBehaviour {
 			}
 		}
 	}
+
 	void Desc(int Cost)
 	{
 		if(Statics.Paws>=Cost)

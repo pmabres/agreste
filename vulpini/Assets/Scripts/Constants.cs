@@ -24,6 +24,7 @@ public static class Constants {
 	public const string TAG_PAWS = "Paws";
 	public const string TAG_POWERS = "Powers";
 	public const int MAX_POWER_VIEW = 5;
+	public const string TAG_TITULO = "Titulo";
 	
 	//Tag Pre
 	public const string TAG_PREC = "PreC";
